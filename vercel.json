@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/projects", "destination": "/projects.html" },
+    { "source": "/team", "destination": "/team.html" },
+    { "source": "/manage", "destination": "/manage.html" },
+    { "source": "/analytics", "destination": "/analytics.html" },
+    { "source": "/portfolio", "destination": "/portfolio.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

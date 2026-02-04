@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المشروع | MAK Team HQ</title>
+    <meta name="description" content="عرض تفاصيل مشروع فريق ميكرز">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
+
+    <style>
+        .project-detail-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .project-hero {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(255, 140, 0, 0.05));
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+        }
+
+        .project-main-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-icon {
+            font-size: 1.5rem;
+        }
+
+        .meta-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .meta-value {
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-in-progress {
+            background: rgba(255, 140, 0, 0.15);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .status-new {
+            background: rgba(0, 168, 255, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 991px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-description-box {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+        }
+
+        .project-description-box h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-description-text {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Files Section */
+        .files-section {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .file-card {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+        }
+
+        .file-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .file-action-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+        }
+
+        .team-member-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-member-row:last-child {
+            border-bottom: none;
+        }
+
+        .member-avatar-lg {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Grade Section */
+        .grade-section {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .grade-display {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grade-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .project-timeline {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-top: 2rem;
+        }
+
+        .timeline-item-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-item-row:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .timeline-icon.completed {
+            background: rgba(0, 255, 136, 0.2);
+        }
+
+        .empty-files {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-files-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Verification Badge */
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 168, 255, 0.2));
+            border: 2px solid var(--success);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            color: var(--success);
+            margin-top: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .project-hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.jpg" alt="MAK Logo">
+                <span class="logo-text">MAK</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="team.html">الفريق</a></li>
+                <li><a href="projects.html" class="active">المشاريع</a></li>
+                <li><a href="login.html" class="btn btn-primary">دخول الأعضاء</a></li>
+            </ul>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Detail Page -->
+    <div class="project-detail-page">
+        <div class="container">
+            <a href="projects.html" class="back-link">→ العودة للمشاريع</a>
+
+            <!-- Project Hero -->
+            <div class="project-hero" id="projectHero">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Project Content -->
+            <div class="project-content">
+                <div class="project-main">
+                    <!-- Description -->
+                    <div class="project-description-box" id="projectDescription">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Files -->
+                    <div class="files-section" id="filesSection">
+                        <h3><i data-lucide="paperclip"></i> ملفات المشروع</h3>
+                        <div class="files-grid" id="filesGrid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="project-timeline" id="projectTimeline">
+                        <h3><i data-lucide="calendar"></i> الجدول الزمني</h3>
+                        <div id="timelineContent">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-sidebar">
+                    <!-- Team -->
+                    <div class="team-section" id="teamSection">
+                        <h4><i data-lucide="users"></i> فريق العمل</h4>
+                        <div id="teamMembers">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Grade -->
+                    <div class="grade-section" id="gradeSection">
+                        <h4><i data-lucide="bar-chart-3"></i> التقييم</h4>
+                        <div id="gradeContent">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/images/logo.jpg" alt="MAK Logo" class="footer-logo">
+            <p class="footer-text">© 2026 Makers Team | MAK</p>
+            <p class="footer-text">هندسة تقنيات الأمن السيبراني - المرحلة الأولى</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/algorithm.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get project ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (!projectId) {
+                window.location.href = 'projects.html';
+                return;
+            }
+
+            const project = Projects.getById(projectId);
+            if (!project) {
+                window.location.href = 'projects.html';
+                return;
+            }
+
+            const settings = App.getSettings();
+            const subject = settings.subjects.find(s => s.id === project.subject) || { name: 'غير محدد', icon: 'folder' };
+            const members = Members.getAll();
+
+            // Status mapping
+            const statusTexts = {
+                'new': 'جديد',
+                'in_progress': 'قيد العمل',
+                'review': 'مراجعة',
+                'completed': 'مكتمل'
+            };
+
+            const statusClasses = {
+                'new': 'status-new',
+                'in_progress': 'status-in-progress',
+                'review': 'status-in-progress',
+                'completed': 'status-completed'
+            };
+
+            // Render Hero
+            document.getElementById('projectHero').innerHTML = `
+        <div class="project-badge"><i data-lucide="${subject.icon}" style="width:16px;height:16px;"></i> ${subject.name}</div>
+        <h1 class="project-main-title">${project.title}</h1>
+        <span class="status-badge ${statusClasses[project.status]}">${statusTexts[project.status]}</span>
+        ${project.status === 'completed' ? '<div class="verification-badge"><i data-lucide="check-circle"></i> تم التحقق من الإنجاز</div>' : ''}
+        <div class="project-hero-actions">
+          ${project.demoUrl ? `<a href="${project.demoUrl}" target="_blank" class="btn btn-primary btn-shine btn-lg"><i data-lucide="rocket"></i> تشغيل المشروع</a>` : ''}
+          ${project.repoUrl ? `<a href="${project.repoUrl}" target="_blank" class="btn btn-secondary btn-lg"><i data-lucide="github"></i> الكود المصدري</a>` : ''}
+        </div>
+        <div class="project-meta-row">
+          <div class="meta-item">
+            <span class="meta-icon"><i data-lucide="calendar" style="width:20px;height:20px;"></i></span>
+            <div>
+              <div class="meta-label">تاريخ الإنشاء</div>
+              <div class="meta-value">${new Date(project.createdDate).toLocaleDateString('ar-IQ')}</div>
+            </div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></span>
+            <div>
+              <div class="meta-label">الموعد النهائي</div>
+              <div class="meta-value">${new Date(project.deadline).toLocaleDateString('ar-IQ')}</div>
+            </div>
+          </div>
+          ${project.completedDate ? `
+          <div class="meta-item">
+            <span class="meta-icon"><i data-lucide="check-circle" style="width:20px;height:20px;color:var(--success)"></i></span>
+            <div>
+              <div class="meta-label">تاريخ الإنجاز</div>
+              <div class="meta-value">${new Date(project.completedDate).toLocaleDateString('ar-IQ')}</div>
+            </div>
+          </div>
+          ` : ''}
+          <div class="meta-item">
+            <span class="meta-icon"><i data-lucide="users" style="width:20px;height:20px;"></i></span>
+            <div>
+              <div class="meta-label">عدد الأعضاء</div>
+              <div class="meta-value">${project.assignedMembers.length}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+            // Render Description
+            document.getElementById('projectDescription').innerHTML = `
+        <h3><i data-lucide="file-text" style="width:18px;height:18px;"></i> وصف المشروع</h3>
+        <p class="project-description-text">${project.description || 'لم يتم إضافة وصف لهذا المشروع.'}</p>
+      `;
+
+            // Render Files
+            const filesGrid = document.getElementById('filesGrid');
+            if (project.files && project.files.length > 0) {
+                filesGrid.innerHTML = project.files.map(file => {
+                    const fileIcon = getFileIcon(file.type || file.name);
+                    return `
+            <div class="file-card" onclick="viewFile('${file.data || file.url}', '${file.name}', '${file.type}')">
+              <div class="file-icon">${fileIcon}</div>
+              <div class="file-name">${file.name}</div>
+              <div class="file-size">${file.size || ''}</div>
+              <div class="file-actions">
+                <button class="btn btn-secondary file-action-btn" onclick="event.stopPropagation(); downloadFile('${file.data || file.url}', '${file.name}')"><i data-lucide="download" style="width:14px;height:14px;"></i> تحميل</button>
+              </div>
+            </div>
+          `;
+                }).join('');
+            } else {
+                filesGrid.innerHTML = `
+          <div class="empty-files" style="grid-column: 1 / -1;">
+            <div class="empty-files-icon"><i data-lucide="folder-open" style="width:48px;height:48px;"></i></div>
+            <p>لم يتم إضافة ملفات بعد</p>
+          </div>
+        `;
+            }
+
+            // Render Team
+            document.getElementById('teamMembers').innerHTML = project.assignedMembers.map(id => {
+                const member = members.find(m => m.id === id);
+                if (!member) return '';
+                return `
+          <div class="team-member-row">
+            <div class="member-avatar-lg">${member.avatar}</div>
+            <div>
+              <div style="font-weight: 600;">${member.name}</div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary);">${member.role}</div>
+            </div>
+          </div>
+        `;
+            }).join('');
+
+            // Render Grade
+            const gradeContent = document.getElementById('gradeContent');
+            if (project.grade) {
+                gradeContent.innerHTML = `
+          <div class="grade-display">${project.grade}</div>
+          <div class="grade-label">من 100</div>
+          ${project.feedback ? `<p style="margin-top: 1rem; color: var(--text-secondary);">${project.feedback}</p>` : ''}
+        `;
+            } else {
+                gradeContent.innerHTML = `
+          <div style="color: var(--text-muted); padding: 1rem;">
+            ${project.status === 'completed' ? 'في انتظار التقييم' : 'سيتم التقييم بعد الإنجاز'}
+          </div>
+        `;
+            }
+
+            // Render Timeline
+            document.getElementById('timelineContent').innerHTML = `
+        <div class="timeline-item-row">
+          <div class="timeline-icon completed"><i data-lucide="clipboard-list" style="width:18px;height:18px;"></i></div>
+          <div>
+            <div style="font-weight: 600;">تم إنشاء المشروع</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.createdDate).toLocaleDateString('ar-IQ')}</div>
+          </div>
+        </div>
+        ${project.status !== 'new' ? `
+        <div class="timeline-item-row">
+          <div class="timeline-icon completed"><i data-lucide="play-circle" style="width:18px;height:18px;"></i></div>
+          <div>
+            <div style="font-weight: 600;">بدء العمل</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">تم تعيين ${project.assignedMembers.length} أعضاء</div>
+          </div>
+        </div>
+        ` : ''}
+        ${project.status === 'completed' ? `
+        <div class="timeline-item-row">
+          <div class="timeline-icon completed"><i data-lucide="check-circle" style="width:18px;height:18px;color:var(--success);"></i></div>
+          <div>
+            <div style="font-weight: 600;">تم الإنجاز</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.completedDate).toLocaleDateString('ar-IQ')}</div>
+          </div>
+        </div>
+        ` : `
+        <div class="timeline-item-row">
+          <div class="timeline-icon"><i data-lucide="hourglass" style="width:18px;height:18px;"></i></div>
+          <div>
+            <div style="font-weight: 600;">الموعد النهائي</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.deadline).toLocaleDateString('ar-IQ')}</div>
+          </div>
+        </div>
+        `}
+      `;
+
+            // Update page title
+            document.title = `${project.title} | MAK Team HQ`;
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Get file icon based on extension - supports ALL file types
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const icons = {
+                // Documents
+                'pdf': 'file-text',
+                'doc': 'file-text', 'docx': 'file-text', 'odt': 'file-text', 'rtf': 'file-text',
+                'xls': 'file-spreadsheet', 'xlsx': 'file-spreadsheet', 'ods': 'file-spreadsheet', 'csv': 'file-spreadsheet',
+                'ppt': 'presentation', 'pptx': 'presentation', 'odp': 'presentation',
+                'txt': 'file-text', 'md': 'file-text', 'log': 'file-text',
+
+                // Images
+                'jpg': 'image', 'jpeg': 'image', 'png': 'image', 'gif': 'image', 'webp': 'image',
+                'bmp': 'image', 'svg': 'image', 'ico': 'image', 'tiff': 'image', 'tif': 'image',
+                'psd': 'image', 'ai': 'image', 'eps': 'image', 'raw': 'image', 'cr2': 'image',
+                'nef': 'image', 'heic': 'image', 'heif': 'image', 'avif': 'image',
+
+                // Video
+                'mp4': 'video', 'mov': 'video', 'avi': 'video', 'webm': 'video', 'mkv': 'video',
+                'flv': 'video', 'wmv': 'video', 'm4v': 'video', '3gp': 'video', 'mpeg': 'video',
+                'mpg': 'video', 'ogv': 'video', 'ts': 'video', 'vob': 'video',
+
+                // Audio
+                'mp3': 'music', 'wav': 'music', 'ogg': 'music', 'flac': 'music', 'aac': 'music',
+                'wma': 'music', 'm4a': 'music', 'aiff': 'music', 'mid': 'music', 'midi': 'music',
+                'opus': 'music', 'amr': 'music',
+
+                // Archives
+                'zip': 'archive', 'rar': 'archive', '7z': 'archive', 'tar': 'archive', 'gz': 'archive',
+                'bz2': 'archive', 'xz': 'archive', 'iso': 'archive', 'dmg': 'archive', 'cab': 'archive',
+
+                // Code
+                'py': 'file-code', 'js': 'file-code', 'ts': 'file-code', 'jsx': 'file-code', 'tsx': 'file-code',
+                'html': 'file-code', 'htm': 'file-code', 'css': 'file-code', 'scss': 'file-code', 'sass': 'file-code',
+                'c': 'file-code', 'cpp': 'file-code', 'h': 'file-code', 'hpp': 'file-code',
+                'java': 'file-code', 'kt': 'file-code', 'swift': 'file-code', 'm': 'file-code',
+                'cs': 'file-code', 'vb': 'file-code', 'fs': 'file-code',
+                'php': 'file-code', 'rb': 'file-code', 'go': 'file-code', 'rs': 'file-code',
+                'r': 'file-code', 'pl': 'file-code', 'lua': 'file-code', 'sh': 'file-code',
+                'sql': 'database', 'json': 'file-json', 'xml': 'file-code', 'yaml': 'file-code', 'yml': 'file-code',
+
+                // Executables & System
+                'exe': 'cog', 'msi': 'cog', 'apk': 'smartphone', 'ipa': 'smartphone',
+                'dll': 'cog', 'so': 'cog', 'dylib': 'cog',
+                'sys': 'settings', 'ini': 'settings', 'cfg': 'settings', 'conf': 'settings',
+                'bat': 'terminal', 'cmd': 'terminal', 'ps1': 'terminal', 'bash': 'terminal',
+
+                // Fonts
+                'ttf': 'type', 'otf': 'type', 'woff': 'type', 'woff2': 'type', 'eot': 'type',
+
+                // 3D & CAD
+                'obj': 'box', 'fbx': 'box', 'stl': 'box', 'blend': 'box', 'dae': 'box',
+                'dwg': 'ruler', 'dxf': 'ruler', 'skp': 'box', 'max': 'box', 'maya': 'box',
+
+                // Database
+                'db': 'database', 'sqlite': 'database', 'mdb': 'database', 'accdb': 'database',
+
+                // Ebook
+                'epub': 'book-open', 'mobi': 'book-open', 'azw': 'book-open', 'azw3': 'book-open',
+
+                // Other
+                'torrent': 'download', 'ics': 'calendar', 'vcf': 'user',
+
+                'default': 'file'
+            };
+
+            const iconName = icons[ext] || icons['default'];
+            return `<i data-lucide="${iconName}" style="width:32px;height:32px;"></i>`;
+        }
+
+        // View file
+        function viewFile(dataOrUrl, name, type) {
+            if (dataOrUrl.startsWith('data:')) {
+                // Open in new tab for data URLs
+                const newWindow = window.open();
+                if (type.startsWith('image/')) {
+                    newWindow.document.write(`<img src="${dataOrUrl}" style="max-width: 100%;">`);
+                } else if (type === 'application/pdf') {
+                    newWindow.document.write(`<embed src="${dataOrUrl}" width="100%" height="100%" type="application/pdf">`);
+                } else {
+                    downloadFile(dataOrUrl, name);
+                }
+            } else {
+                window.open(dataOrUrl, '_blank');
+            }
+        }
+
+        // Download file
+        function downloadFile(dataOrUrl, name) {
+            const a = document.createElement('a');
+            a.href = dataOrUrl;
+            a.download = name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+
+</html>

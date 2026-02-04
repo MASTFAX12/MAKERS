@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفريق | MAK Team HQ</title>
+    <meta name="description" content="تعرف على أعضاء فريق ميكرز - MAK Team">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.jpg" alt="MAK Logo">
+                <span class="logo-text">MAK</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="team.html" class="active">الفريق</a></li>
+                <li><a href="projects.html">المشاريع</a></li>
+                <li><a href="login.html" class="btn btn-primary">دخول الأعضاء</a></li>
+            </ul>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">فريق ميكرز</h1>
+                <p class="section-subtitle">6 أعضاء متحمسين للتميز في هندسة الأمن السيبراني</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Stats -->
+    <section class="section">
+        <div class="container">
+            <div class="hero-stats" style="justify-content: center; gap: 3rem;">
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">أعضاء</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalProjects">0</span>
+                    <span class="stat-label">مشروع</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="completedProjects">0</span>
+                    <span class="stat-label">مكتمل</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members -->
+    <section class="section">
+        <div class="container">
+            <div class="members-grid" id="teamMembers">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution Chart -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مساهمات الأعضاء</h2>
+                <p class="section-subtitle">توزيع العمل بين أعضاء الفريق</p>
+            </div>
+
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <ul class="contribution-list" id="contributionChart">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/images/logo.jpg" alt="MAK Logo" class="footer-logo">
+            <p class="footer-text">© 2026 Makers Team | MAK</p>
+            <p class="footer-text">هندسة تقنيات الأمن السيبراني - المرحلة الأولى</p>
+            <div class="footer-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="team.html">الفريق</a>
+                <a href="projects.html">المشاريع</a>
+                <a href="login.html">دخول</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/algorithm.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render team members
+            const container = document.getElementById('teamMembers');
+            Members.renderAllCards(container, true);
+
+            // Render contribution chart
+            const chartContainer = document.getElementById('contributionChart');
+            Members.renderContributionChart(chartContainer);
+
+            // Update stats
+            const stats = Members.getTotalStats();
+            document.getElementById('totalProjects').textContent = stats.totalProjects;
+            document.getElementById('completedProjects').textContent = stats.completedProjects;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المشاريع | MAK Team HQ</title>
+    <meta name="description" content="مشاريع فريق ميكرز - MAK Team">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
+
+    <style>
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stats-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        .stats-bar-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .stats-bar-label {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.jpg" alt="MAK Logo">
+                <span class="logo-text">MAK</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="team.html">الفريق</a></li>
+                <li><a href="projects.html" class="active">المشاريع</a></li>
+                <li><a href="login.html" class="btn btn-primary">دخول الأعضاء</a></li>
+            </ul>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">معرض المشاريع</h1>
+                <p class="section-subtitle">جميع مشاريع فريق ميكرز</p>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stats-bar-item">
+                    <span class="stats-bar-value" id="totalCount">0</span>
+                    <span class="stats-bar-label">إجمالي</span>
+                </div>
+                <div class="stats-bar-item">
+                    <span class="stats-bar-value" id="completedCount">0</span>
+                    <span class="stats-bar-label">مكتمل</span>
+                </div>
+                <div class="stats-bar-item">
+                    <span class="stats-bar-value" id="inProgressCount">0</span>
+                    <span class="stats-bar-label">جاري</span>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <span class="filter-label">المادة:</span>
+                    <select class="filter-select" id="filterSubject">
+                        <option value="">الكل</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">الحالة:</span>
+                    <select class="filter-select" id="filterStatus">
+                        <option value="">الكل</option>
+                        <option value="new">جديد</option>
+                        <option value="in_progress">جاري</option>
+                        <option value="review">مراجعة</option>
+                        <option value="completed">مكتمل</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">العضو:</span>
+                    <select class="filter-select" id="filterMember">
+                        <option value="">الكل</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Subject Stats -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">المشاريع حسب المادة</h2>
+            </div>
+
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <ul class="subject-stats" id="subjectStats">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/images/logo.jpg" alt="MAK Logo" class="footer-logo">
+            <p class="footer-text">© 2026 Makers Team | MAK</p>
+            <p class="footer-text">هندسة تقنيات الأمن السيبراني - المرحلة الأولى</p>
+            <div class="footer-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="team.html">الفريق</a>
+                <a href="projects.html">المشاريع</a>
+                <a href="login.html">دخول</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/algorithm.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const settings = App.getSettings();
+            const members = Members.getAll();
+
+            // Populate filter dropdowns
+            const subjectFilter = document.getElementById('filterSubject');
+            settings.subjects.forEach(s => {
+                subjectFilter.innerHTML += `<option value="${s.id}">${s.icon} ${s.name}</option>`;
+            });
+
+            const memberFilter = document.getElementById('filterMember');
+            members.forEach(m => {
+                memberFilter.innerHTML += `<option value="${m.id}">${m.name}</option>`;
+            });
+
+            // Update stats
+            function updateStats() {
+                const stats = Projects.getStats();
+                document.getElementById('totalCount').textContent = stats.total;
+                document.getElementById('completedCount').textContent = stats.byStatus.completed || 0;
+                document.getElementById('inProgressCount').textContent =
+                    (stats.byStatus.in_progress || 0) + (stats.byStatus.new || 0);
+            }
+
+            // Render projects
+            function renderProjects() {
+                const filter = {
+                    subject: document.getElementById('filterSubject').value || null,
+                    status: document.getElementById('filterStatus').value || null,
+                    member: document.getElementById('filterMember').value || null
+                };
+
+                const container = document.getElementById('projectsGrid');
+                Projects.renderAll(container, filter);
+            }
+
+            // Filter event listeners
+            document.getElementById('filterSubject').addEventListener('change', renderProjects);
+            document.getElementById('filterStatus').addEventListener('change', renderProjects);
+            document.getElementById('filterMember').addEventListener('change', renderProjects);
+
+            // Initial render
+            updateStats();
+            renderProjects();
+
+            // Render subject stats
+            const subjectStatsContainer = document.getElementById('subjectStats');
+            Projects.renderSubjectStats(subjectStatsContainer);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | MAK Team</title>
+    <meta name="description" content="معرض أعمال فريق ميكرز - قسم هندسة تقنيات الأمن السيبراني">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MAK Team Portfolio">
+    <meta property="og:description" content="معرض أعمال فريق ميكرز - قسم هندسة تقنيات الأمن السيبراني">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/premium.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent: #00a8ff;
+            --accent-purple: #8b5cf6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 168, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 168, 255, 0.3);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00a8ff, #8b5cf6, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-department {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .hero-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* Navigation */
+        .navbar-portfolio {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .navbar-logo span {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Projects Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 168, 255, 0.1);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(139, 92, 246, 0.05));
+        }
+
+        .project-subject {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .project-meta-item i {
+            width: 16px;
+            height: 16px;
+        }
+
+        .project-grade {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .project-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-team {
+            display: flex;
+        }
+
+        .project-team-member {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            border: 2px solid var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: -8px;
+        }
+
+        .btn-view {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-view:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-purple);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .team-stats span {
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-portfolio">
+        <a href="index.html" class="navbar-logo">
+            <img src="assets/images/logo.jpg" alt="MAK">
+            <span>MAK Team</span>
+        </a>
+        <a href="login.html" class="btn-view">تسجيل الدخول</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="assets/images/logo.jpg" alt="MAK Logo" class="hero-logo">
+        <h1 class="hero-title">Makers Team</h1>
+        <p class="hero-subtitle">فريق ميكرز</p>
+        <p class="hero-department">قسم هندسة تقنيات الأمن السيبراني</p>
+
+        <div class="hero-stats" id="heroStats">
+            <!-- Populated by JS -->
+        </div>
+
+        <div class="scroll-indicator">
+            <i data-lucide="chevron-down" style="width:32px;height:32px;color:var(--text-secondary);"></i>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+        <h2 class="section-title">مشاريعنا المنجزة</h2>
+        <p class="section-subtitle">أعمال الفريق المكتملة والمقيّمة</p>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" id="team">
+        <h2 class="section-title">فريق العمل</h2>
+        <p class="section-subtitle">الأعضاء المؤسسون لفريق ميكرز</p>
+
+        <div class="team-grid" id="teamGrid">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">MAK Team HQ</div>
+        <p>© 2026 Makers Team - جميع الحقوق محفوظة</p>
+        <p style="margin-top: 0.5rem;">مشغّل بواسطة MAK Platform v3.0</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/algorithm.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadPortfolio();
+        });
+
+        function loadPortfolio() {
+            const projects = Projects.getAll();
+            const members = Members.getAll();
+            const settings = Storage.get(Storage.KEYS.SETTINGS);
+            const subjects = settings?.subjects || [];
+
+            const completed = projects.filter(p => p.status === 'completed');
+            const totalGrades = completed.filter(p => p.grade).reduce((sum, p) => sum + p.grade, 0);
+            const avgGrade = completed.filter(p => p.grade).length > 0
+                ? (totalGrades / completed.filter(p => p.grade).length).toFixed(0)
+                : 0;
+
+            // Hero Stats
+            document.getElementById('heroStats').innerHTML = `
+                <div class="hero-stat">
+                    <div class="hero-stat-value">${completed.length}</div>
+                    <div class="hero-stat-label">مشروع مكتمل</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">${members.length}</div>
+                    <div class="hero-stat-label">أعضاء الفريق</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">${avgGrade}%</div>
+                    <div class="hero-stat-label">متوسط التقييم</div>
+                </div>
+            `;
+
+            // Projects Grid
+            document.getElementById('projectsGrid').innerHTML = completed.length === 0
+                ? '<p style="text-align:center;color:var(--text-secondary);grid-column:1/-1;">لا توجد مشاريع مكتملة حالياً</p>'
+                : completed.map(project => {
+                    const subject = subjects.find(s => s.id === project.subject) || { name: 'عام', icon: 'folder' };
+                    const teamMembers = project.assignedMembers?.map(id => {
+                        const m = members.find(mem => mem.id === id);
+                        return m ? m.name.charAt(0) : '?';
+                    }) || [];
+
+                    return `
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-subject">
+                                    <i data-lucide="${subject.icon || 'folder'}"></i>
+                                    ${subject.name}
+                                </div>
+                                <h3 class="project-title">${project.title}</h3>
+                            </div>
+                            <div class="project-body">
+                                <p class="project-description">${project.description || 'لا يوجد وصف'}</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">
+                                        <i data-lucide="calendar"></i>
+                                        ${new Date(project.completedDate || project.createdDate).toLocaleDateString('ar-IQ')}
+                                    </span>
+                                    ${project.grade ? `<span class="project-grade">${project.grade}/100</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-team">
+                                    ${teamMembers.slice(0, 4).map(initial =>
+                        `<div class="project-team-member">${initial}</div>`
+                    ).join('')}
+                                    ${teamMembers.length > 4 ? `<div class="project-team-member">+${teamMembers.length - 4}</div>` : ''}
+                                </div>
+                                <a href="project.html?id=${project.id}" class="btn-view">
+                                    عرض التفاصيل
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+            // Team Grid
+            document.getElementById('teamGrid').innerHTML = members.map(member => {
+                const memberProjects = projects.filter(p => p.assignedMembers?.includes(member.id));
+                const completedCount = memberProjects.filter(p => p.status === 'completed').length;
+
+                return `
+                    <div class="team-card">
+                        <div class="team-avatar">${member.name.charAt(0)}</div>
+                        <div class="team-name">${member.name}</div>
+                        <div class="team-role">${member.role || 'عضو'}</div>
+                        <div class="team-stats">
+                            <span>${completedCount} مشروع</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>

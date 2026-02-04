@@ -1,0 +1,405 @@
+/* ============================================
+   MAK TEAM HQ - Icons & Activity Log Styles
+   Lucide Icons integration + Activity Log UI
+   ============================================ */
+
+/* ============================================
+   Lucide Icons Base Styles
+   ============================================ */
+[data-lucide] {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+    vertical-align: middle;
+}
+
+.icon-sm [data-lucide],
+.icon-sm i {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-lg [data-lucide],
+.icon-lg i {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-xl [data-lucide],
+.icon-xl i {
+    width: 32px;
+    height: 32px;
+}
+
+/* Icon + Text alignment */
+.icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Button with icon */
+.btn i,
+.btn [data-lucide] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Nav link icons */
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 0.5rem;
+}
+
+/* Sidebar menu icons */
+.menu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: 0.75rem;
+}
+
+.menu-icon i,
+.menu-icon [data-lucide] {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================
+   Activity Log Styles
+   ============================================ */
+.activity-log {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.log-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+    border-right: 3px solid transparent;
+}
+
+.log-item:hover {
+    background: var(--bg-card);
+    border-right-color: var(--accent-blue);
+}
+
+.log-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.log-icon i,
+.log-icon [data-lucide] {
+    width: 20px;
+    height: 20px;
+}
+
+.log-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.log-action {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.log-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.log-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.log-time {
+    color: var(--text-muted);
+}
+
+.log-details {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* Log action colors */
+.log-item.log-success {
+    border-right-color: var(--success);
+}
+
+.log-item.log-warning {
+    border-right-color: var(--warning);
+}
+
+.log-item.log-danger {
+    border-right-color: var(--danger);
+}
+
+.log-item.log-info {
+    border-right-color: var(--accent-blue);
+}
+
+/* ============================================
+   User Profile Badge
+   ============================================ */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.user-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   PIN Change Form
+   ============================================ */
+.pin-change-form {
+    max-width: 400px;
+}
+
+.pin-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    direction: ltr;
+}
+
+.pin-input-small {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ============================================
+   Stats Card Icons
+   ============================================ */
+.stat-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card-icon i,
+.stat-card-icon [data-lucide] {
+    width: 40px;
+    height: 40px;
+    color: var(--accent-blue);
+}
+
+/* ============================================
+   Section Headers with Icons
+   ============================================ */
+.section-header-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-header-icon i,
+.section-header-icon [data-lucide] {
+    width: 28px;
+    height: 28px;
+    color: var(--accent-blue);
+}
+
+/* ============================================
+   Action Buttons with Icons
+   ============================================ */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.action-btn.action-danger:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.action-btn.action-success:hover {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+/* ============================================
+   Empty States with Icons
+   ============================================ */
+.empty-state i,
+.empty-state [data-lucide] {
+    width: 64px;
+    height: 64px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Notification Items
+   ============================================ */
+.notification-icon {
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   Project Card Icons
+   ============================================ */
+.project-meta i,
+.project-meta [data-lucide] {
+    width: 14px;
+    height: 14px;
+    margin-left: 0.25rem;
+}
+
+/* ============================================
+   File Icons
+   ============================================ */
+.file-type-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-type-icon i,
+.file-type-icon [data-lucide] {
+    width: 32px;
+    height: 32px;
+}
+
+.file-type-icon.pdf {
+    color: #e74c3c;
+}
+
+.file-type-icon.doc {
+    color: #2980b9;
+}
+
+.file-type-icon.xls {
+    color: #27ae60;
+}
+
+.file-type-icon.ppt {
+    color: #e67e22;
+}
+
+.file-type-icon.image {
+    color: #9b59b6;
+}
+
+.file-type-icon.video {
+    color: #e91e63;
+}
+
+.file-type-icon.audio {
+    color: #00bcd4;
+}
+
+.file-type-icon.zip {
+    color: #795548;
+}
+
+.file-type-icon.code {
+    color: #ff9800;
+}
+
+/* ============================================
+   Responsive Icon Sizes
+   ============================================ */
+@media (max-width: 767px) {
+
+    .stat-card-icon i,
+    .stat-card-icon [data-lucide] {
+        width: 32px;
+        height: 32px;
+    }
+
+    .log-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .log-icon i,
+    .log-icon [data-lucide] {
+        width: 18px;
+        height: 18px;
+    }
+
+    .log-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

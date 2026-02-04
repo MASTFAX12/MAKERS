@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المشروع | MAK Team HQ</title>
+    <meta name="theme-color" content="#0a0a0f">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/ai-components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
+
+    <style>
+        .manage-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .manage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .status-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .status-btn.active {
+            border-color: var(--accent-blue);
+            background: rgba(0, 168, 255, 0.1);
+            color: var(--accent-blue);
+        }
+
+        .status-btn.completed {
+            border-color: var(--success);
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--success);
+        }
+
+        .manage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+
+
+        .manage-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+        }
+
+        .manage-section h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* File Upload */
+        .file-upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .file-upload-zone:hover,
+        .file-upload-zone.dragover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 168, 255, 0.05);
+        }
+
+        .file-upload-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-upload-text {
+            color: var(--text-secondary);
+        }
+
+        .uploaded-files-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .uploaded-file-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+        }
+
+        .uploaded-file-icon {
+            font-size: 1.5rem;
+        }
+
+        .uploaded-file-info {
+            flex: 1;
+        }
+
+        .uploaded-file-name {
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .uploaded-file-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .uploaded-file-remove {
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Grade Input */
+        .grade-input-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .grade-input {
+            width: 100px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .grade-max {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Actions */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-danger {
+            background: transparent;
+            border: 2px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            border: 2px solid var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 0 20px var(--success);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.jpg" alt="MAK Logo">
+                <span class="logo-text">MAK</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="dashboard.html">لوحة التحكم</a></li>
+                <li><a href="#" onclick="Auth.logout()" class="btn btn-secondary">تسجيل خروج</a></li>
+            </ul>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Manage Page -->
+    <div class="manage-page">
+        <div class="container">
+            <a href="dashboard.html" class="back-btn">→ العودة للوحة التحكم</a>
+
+            <div class="manage-header">
+                <div>
+                    <h1 id="projectTitle">إدارة المشروع</h1>
+                    <p id="projectSubject" style="color: var(--text-secondary);"></p>
+                </div>
+                <div class="status-buttons" id="statusButtons">
+                    <!-- Status buttons will be added by JS -->
+                </div>
+            </div>
+
+            <div class="manage-grid">
+                <!-- Left Column -->
+                <div>
+                    <!-- File Upload Section -->
+                    <div class="manage-section">
+                        <h3>📎 ملفات المشروع</h3>
+                        <div class="file-upload-zone" id="uploadZone">
+                            <div class="file-upload-icon">📂</div>
+                            <div class="file-upload-text">
+                                اسحب الملفات هنا أو انقر للاختيار<br>
+                                <small>يدعم جميع أنواع الملفات (PDF, Word, PowerPoint, صور, فيديو...)</small>
+                            </div>
+                            <input type="file" id="fileInput" multiple style="display: none;">
+                        </div>
+                        <div class="uploaded-files-list" id="filesList">
+                            <!-- Files will be listed here -->
+                        </div>
+                    </div>
+
+                    <div class="manage-section" style="margin-top: 1rem;">
+                        <h3>📝 ملاحظات</h3>
+                        <textarea class="form-textarea" id="projectNotes" placeholder="أضف ملاحظات حول المشروع..."
+                            rows="4"></textarea>
+                    </div>
+
+                    <!-- Project Links Section -->
+                    <div class="manage-section" style="margin-top: 1rem;">
+                        <h3>🔗 روابط المشروع</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <label class="form-label">رابط المعاينة (Demo URL)</label>
+                                <div class="input-with-icon">
+                                    <i data-lucide="globe" class="input-icon"></i>
+                                    <input type="url" class="form-input" id="demoUrlInput"
+                                        placeholder="https://example.com" dir="ltr">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="form-label">رابط المستودع (GitHub)</label>
+                                <div class="input-with-icon">
+                                    <i data-lucide="github" class="input-icon"></i>
+                                    <input type="url" class="form-input" id="repoUrlInput"
+                                        placeholder="https://github.com/username/repo" dir="ltr">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <!-- Grade Section -->
+                    <div class="manage-section">
+                        <h3>📊 التقييم والدرجة</h3>
+                        <div class="grade-input-container">
+                            <input type="number" class="form-input grade-input" id="gradeInput" min="0" max="100"
+                                placeholder="--">
+                            <span class="grade-max">/ 100</span>
+                        </div>
+                        <textarea class="form-textarea" id="feedbackInput" placeholder="ملاحظات التقييم..." rows="3"
+                            style="margin-top: 1rem;"></textarea>
+                    </div>
+
+                    <!-- Project Info Section -->
+                    <div class="manage-section" style="margin-top: 1rem;">
+                        <h3>ℹ️ معلومات المشروع</h3>
+                        <div id="projectInfo">
+                            <!-- Project info will be added by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Actions Section -->
+                    <div class="manage-section" style="margin-top: 1rem;">
+                        <h3>⚙️ الإجراءات</h3>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="saveProject()">💾 حفظ التغييرات</button>
+                            <button class="btn btn-success" onclick="markComplete()" id="completeBtn">✅ وضع علامة
+                                مكتمل</button>
+                            <button class="btn btn-danger" onclick="deleteProject()">🗑️ حذف المشروع</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/firebase-db.js"></script>
+    <script src="js/firebase-storage.js"></script>
+    <script src="js/gemini.js"></script>
+    <script src="js/ai-features.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/project-features.js"></script>
+    <script src="js/reports.js"></script>
+    <script src="js/algorithm.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/effects.js"></script>
+
+
+
+    <script>
+        // Protect page
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        let currentProject = null;
+        let projectFiles = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get project ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (!projectId) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            currentProject = Projects.getById(projectId);
+            if (!currentProject) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Load project data
+            loadProjectData();
+
+            // Setup file upload
+            setupFileUpload();
+        });
+
+        function loadProjectData() {
+            const settings = App.getSettings();
+            const subject = settings.subjects.find(s => s.id === currentProject.subject) || { name: 'غير محدد', icon: '📁' };
+            const members = Members.getAll();
+
+            // Title and subject
+            document.getElementById('projectTitle').textContent = currentProject.title;
+            document.getElementById('projectSubject').textContent = `${subject.icon} ${subject.name}`;
+            document.title = `إدارة: ${currentProject.title} | MAK Team HQ`;
+
+            // Status buttons
+            const statusButtons = document.getElementById('statusButtons');
+            const statuses = [
+                { id: 'new', label: 'جديد' },
+                { id: 'in_progress', label: 'جاري العمل' },
+                { id: 'review', label: 'مراجعة' },
+                { id: 'completed', label: 'مكتمل ✓' }
+            ];
+
+            statusButtons.innerHTML = statuses.map(s => `
+        <button class="status-btn ${currentProject.status === s.id ? 'active' : ''} ${s.id === 'completed' && currentProject.status === 'completed' ? 'completed' : ''}" 
+                onclick="changeStatus('${s.id}')">${s.label}</button>
+      `).join('');
+
+            // Project info
+            const teamHTML = currentProject.assignedMembers.map(id => {
+                const member = members.find(m => m.id === id);
+                return member ? member.name : '';
+            }).filter(n => n).join(', ');
+
+            document.getElementById('projectInfo').innerHTML = `
+        <p><strong>تاريخ الإنشاء:</strong> ${new Date(currentProject.createdDate).toLocaleDateString('ar-IQ')}</p>
+        <p><strong>الموعد النهائي:</strong> ${new Date(currentProject.deadline).toLocaleDateString('ar-IQ')}</p>
+        ${currentProject.completedDate ? `<p><strong>تاريخ الإنجاز:</strong> ${new Date(currentProject.completedDate).toLocaleDateString('ar-IQ')}</p>` : ''}
+        <p><strong>فريق العمل:</strong> ${teamHTML}</p>
+        <p><strong>الأولوية:</strong> ${currentProject.priority}</p>
+      `;
+
+            // Grade and feedback
+            if (currentProject.grade) {
+                document.getElementById('gradeInput').value = currentProject.grade;
+            }
+            if (currentProject.feedback) {
+                document.getElementById('feedbackInput').value = currentProject.feedback;
+            }
+
+            // Notes/Description
+            document.getElementById('projectNotes').value = currentProject.description || '';
+
+            // URLs
+            document.getElementById('demoUrlInput').value = currentProject.demoUrl || '';
+            document.getElementById('repoUrlInput').value = currentProject.repoUrl || '';
+
+            // Files
+            projectFiles = currentProject.files || [];
+            renderFiles();
+
+            // Update complete button
+            if (currentProject.status === 'completed') {
+                document.getElementById('completeBtn').textContent = '↩️ إلغاء الإكمال';
+            }
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        function setupFileUpload() {
+            const uploadZone = document.getElementById('uploadZone');
+            const fileInput = document.getElementById('fileInput');
+
+            // Click to upload
+            uploadZone.addEventListener('click', () => fileInput.click());
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+
+            // Drag and drop
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.classList.remove('dragover');
+            });
+
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+        }
+
+        async function handleFiles(files) {
+            const uploadZone = document.getElementById('uploadZone');
+            const originalText = uploadZone.innerHTML;
+
+            // Show loading state
+            uploadZone.innerHTML = `
+                <div class="loading-spinner"></div>
+                <p>جاري رفع الملفات...</p>
+                <div class="progress-bar" style="width: 80%; margin: 1rem auto;">
+                    <div class="progress-fill" id="uploadProgress" style="width: 0%"></div>
+                </div>
+            `;
+
+            try {
+                const uploadedFiles = [];
+                const totalFiles = files.length;
+
+                for (let i = 0; i < totalFiles; i++) {
+                    const file = files[i];
+
+                    // Update progress
+                    const progress = ((i / totalFiles) * 100);
+                    document.getElementById('uploadProgress').style.width = `${progress}%`;
+
+                    try {
+                        // Attempt Firebase Upload
+                        const fileData = await FirebaseStorage.uploadFile(file, currentProject.id, (p) => {
+                            // Sub-file progress could go here
+                        });
+                        uploadedFiles.push(fileData);
+                    } catch (err) {
+                        console.warn('Firebase upload failed, using local fallback:', err);
+                        const fileData = await FirebaseStorage.uploadFileLocal(file, currentProject.id);
+                        uploadedFiles.push(fileData);
+                    }
+                }
+
+                projectFiles = [...projectFiles, ...uploadedFiles];
+                renderFiles();
+                App.showToast(`تم رفع ${uploadedFiles.length} ملفات بنجاح`, 'success');
+
+            } catch (error) {
+                console.error('Upload Error:', error);
+                App.showToast('حدث خطأ أثناء الرفع', 'error');
+            } finally {
+                // Restore upload zone
+                uploadZone.innerHTML = originalText;
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileIcon(filename) {
+            // (Function remains same, omitting for brevity in this replace block if unchanged, 
+            // but for replace_file_content we must match exactly or replace whole block. 
+            // Since getFileIcon is long, I will assume it's after the replaced block or include it if needed.
+            // In the original file, getFileIcon starts at line 511. My replacement ends before that?
+            // No, I am replacing from 397 to 645. I need to include getFileIcon.)
+            const ext = filename.split('.').pop().toLowerCase();
+            // ... simplified for this tool call, actually the efficient way is to STOP before getFileIcon
+            // getFileIcon starts at 511.
+            // wait, I can target specific functions. 
+            // Let's split this into smaller edits.
+            return 'file'; // Placeholder, I will use a different tool call or keep it if I include it.
+        }
+
+        // RE-STRATEGY: I will only replace loadProjectData, setupFileUpload, handleFiles, saveProject.
+        // getFileIcon is at 511. 
+        // handleFiles ends at 501.
+        // so I can replace from 397 to 501 (loadProjectData + setupFileUpload + handleFiles).
+        // Then replace saveProject at 619.
+
+        // This tool call is cancelled in thought. I will issue efficient calls.
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const icons = {
+                // Documents
+                'pdf': 'file-text',
+                'doc': 'file-text', 'docx': 'file-text', 'odt': 'file-text', 'rtf': 'file-text',
+                'xls': 'file-spreadsheet', 'xlsx': 'file-spreadsheet', 'ods': 'file-spreadsheet', 'csv': 'file-spreadsheet',
+                'ppt': 'file-presentation', 'pptx': 'file-presentation', 'odp': 'file-presentation',
+                'txt': 'file-text', 'md': 'file-text', 'log': 'file-text',
+
+                // Images
+                'jpg': 'image', 'jpeg': 'image', 'png': 'image', 'gif': 'image', 'webp': 'image',
+                'bmp': 'image', 'svg': 'image', 'ico': 'image', 'tiff': 'image', 'tif': 'image',
+                'psd': 'image', 'ai': 'image', 'eps': 'image', 'raw': 'image', 'cr2': 'image',
+                'nef': 'image', 'heic': 'image', 'heif': 'image', 'avif': 'image',
+
+                // Video
+                'mp4': 'video', 'mov': 'video', 'avi': 'video', 'webm': 'video', 'mkv': 'video',
+                'flv': 'video', 'wmv': 'video', 'm4v': 'video', '3gp': 'video', 'mpeg': 'video',
+                'mpg': 'video', 'ogv': 'video', 'ts': 'video', 'vob': 'video',
+
+                // Audio
+                'mp3': 'music', 'wav': 'music', 'ogg': 'music', 'flac': 'music', 'aac': 'music',
+                'wma': 'music', 'm4a': 'music', 'aiff': 'music', 'mid': 'music', 'midi': 'music',
+                'opus': 'music', 'amr': 'music',
+
+                // Archives
+                'zip': 'archive', 'rar': 'archive', '7z': 'archive', 'tar': 'archive', 'gz': 'archive',
+                'bz2': 'archive', 'xz': 'archive', 'iso': 'archive', 'dmg': 'archive', 'cab': 'archive',
+
+                // Code
+                'py': 'file-code', 'js': 'file-code', 'ts': 'file-code', 'jsx': 'file-code', 'tsx': 'file-code',
+                'html': 'file-code', 'htm': 'file-code', 'css': 'file-code', 'scss': 'file-code', 'sass': 'file-code', 'less': 'file-code',
+                'c': 'file-code', 'cpp': 'file-code', 'h': 'file-code', 'hpp': 'file-code',
+                'java': 'file-code', 'kt': 'file-code', 'swift': 'file-code', 'm': 'file-code',
+                'cs': 'file-code', 'vb': 'file-code', 'fs': 'file-code',
+                'php': 'file-code', 'rb': 'file-code', 'go': 'file-code', 'rs': 'file-code',
+                'r': 'file-code', 'pl': 'file-code', 'lua': 'file-code', 'sh': 'file-code', 'bash': 'file-code',
+                'ps1': 'file-code', 'bat': 'file-code', 'cmd': 'file-code',
+                'sql': 'database', 'json': 'file-json', 'xml': 'file-code', 'yaml': 'file-code', 'yml': 'file-code',
+
+                // Executables & System
+                'exe': 'cog', 'msi': 'cog', 'apk': 'smartphone', 'ipa': 'smartphone',
+                'dll': 'cog', 'so': 'cog', 'dylib': 'cog',
+                'sys': 'settings', 'ini': 'settings', 'cfg': 'settings', 'conf': 'settings',
+
+                // Fonts
+                'ttf': 'type', 'otf': 'type', 'woff': 'type', 'woff2': 'type', 'eot': 'type',
+
+                // 3D & CAD
+                'obj': 'box', 'fbx': 'box', 'stl': 'box', 'blend': 'box', 'dae': 'box',
+                'dwg': 'ruler', 'dxf': 'ruler', 'skp': 'box',
+
+                // Database
+                'db': 'database', 'sqlite': 'database', 'mdb': 'database', 'accdb': 'database',
+
+                // Ebook
+                'epub': 'book-open', 'mobi': 'book-open', 'azw': 'book-open', 'azw3': 'book-open',
+
+                // Other
+                'torrent': 'download', 'ics': 'calendar', 'vcf': 'user',
+
+                'default': 'file'
+            };
+            return icons[ext] || icons['default'];
+        }
+
+        function renderFiles() {
+            const container = document.getElementById('filesList');
+
+            if (projectFiles.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 1rem;">لا توجد ملفات مرفوعة</p>';
+                return;
+            }
+
+            container.innerHTML = projectFiles.map((file, index) => `
+        <div class="uploaded-file-item">
+          <div class="uploaded-file-icon"><i data-lucide="${getFileIcon(file.name)}"></i></div>
+          <div class="uploaded-file-info">
+            <div class="uploaded-file-name">${file.name}</div>
+            <div class="uploaded-file-size">${file.size}</div>
+          </div>
+          <button class="uploaded-file-remove" onclick="removeFile(${index})"><i data-lucide="x"></i></button>
+        </div>
+      `).join('');
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        function removeFile(index) {
+            projectFiles.splice(index, 1);
+            renderFiles();
+            App.showToast('تم حذف الملف', 'info');
+        }
+
+        function changeStatus(status) {
+            currentProject.status = status;
+            if (status === 'completed') {
+                currentProject.completedDate = new Date().toISOString();
+            } else {
+                currentProject.completedDate = null;
+            }
+            loadProjectData();
+        }
+
+        function saveProject() {
+            // Update project data
+            const updates = {
+                description: document.getElementById('projectNotes').value,
+                demoUrl: document.getElementById('demoUrlInput').value,
+                repoUrl: document.getElementById('repoUrlInput').value,
+                files: projectFiles,
+                status: currentProject.status,
+                completedDate: currentProject.completedDate,
+                grade: parseInt(document.getElementById('gradeInput').value) || null,
+                feedback: document.getElementById('feedbackInput').value
+            };
+
+            Projects.update(currentProject.id, updates);
+
+            // If completed, update member stats
+            if (updates.status === 'completed' && !currentProject.statsUpdated) {
+                currentProject.assignedMembers.forEach(memberId => {
+                    Algorithm.completeProject(memberId, currentProject.subject, updates.grade);
+                });
+                Projects.update(currentProject.id, { statsUpdated: true });
+            }
+
+            Effects.showConfetti();
+            App.showToast('تم حفظ التغييرات بنجاح! 🎉', 'success');
+
+            // Update achievements
+            Effects.initAchievements();
+        }
+
+        function markComplete() {
+            if (currentProject.status === 'completed') {
+                changeStatus('in_progress');
+                App.showToast('تم إلغاء وضع علامة مكتمل', 'info');
+            } else {
+                changeStatus('completed');
+                saveProject();
+                App.showToast('تم وضع علامة مكتمل! 🎉', 'success');
+            }
+        }
+
+        function deleteProject() {
+            if (confirm('هل أنت متأكد من حذف هذا المشروع؟ لا يمكن التراجع عن هذا الإجراء.')) {
+                Projects.delete(currentProject.id);
+                App.showToast('تم حذف المشروع', 'info');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+
+</html>
