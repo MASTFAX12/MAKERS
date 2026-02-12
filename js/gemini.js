@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - Gemini AI Service
  * Wrapper for Google Gemini API with caching and rate limiting
  */
@@ -199,3 +199,4 @@ const Gemini = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Gemini;
 }
+

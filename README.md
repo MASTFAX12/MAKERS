@@ -4,7 +4,7 @@
 
 ![MAK Team HQ](assets/images/logo.jpg)
 
-## âœ¨ Key Features
+## ✨ Key Features
 
 ### ًں§  Smart AI Integration (Gemini Pro)
 *   **Team Composer**: Suggests the best team members for a project based on skills.
@@ -68,7 +68,8 @@
 *   **Pavel**
 
 ---
-آ© 2026 Makers Team | Built with â‌¤ï¸ڈ and AI
+آ© 2026 Makers Team | Built with ❤️ and AI
+
 
 
 

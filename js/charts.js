@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    MAK TEAM HQ - Charts Module
    Simple chart rendering without external libraries
    ============================================ */
@@ -326,3 +326,4 @@ chartStyles.textContent = `
   }
 `;
 document.head.appendChild(chartStyles);
+

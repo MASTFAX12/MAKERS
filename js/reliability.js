@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - Reliability & Performance Core
  * Ensures high availability, error tracking, and performance monitoring
  */
@@ -217,3 +217,4 @@ const Reliability = {
 
 // Initialize
 Reliability.init();
+

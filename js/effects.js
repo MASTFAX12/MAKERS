@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    MAK TEAM HQ - Advanced Effects JavaScript
    Particles, sounds, notifications, achievements
    ============================================ */
@@ -496,3 +496,4 @@ document.addEventListener('click', (e) => {
         Effects.playClick();
     }
 });
+

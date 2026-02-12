@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    MAK TEAM HQ - Main Application
    Core application logic and UI interactions
    ============================================ */
@@ -314,3 +314,4 @@ const App = {
 document.addEventListener('DOMContentLoaded', () => {
     App.init();
 });
+

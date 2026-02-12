@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - Notifications System
  * Real-time notifications with Firebase
  */
@@ -317,3 +317,4 @@ const Notifications = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Notifications;
 }
+

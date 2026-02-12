@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - Reports Module
  * Professional PDF report generation
  */
@@ -410,3 +410,4 @@ const Reports = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Reports;
 }
+

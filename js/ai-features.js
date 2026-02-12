@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - AI Features
  * 10 Smart AI Features powered by Gemini (NOT a chatbot!)
  */
@@ -528,3 +528,4 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = AIFeatures;
 }
+

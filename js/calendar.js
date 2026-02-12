@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    MAK TEAM HQ - Calendar Module
    Interactive calendar for deadline tracking
    ============================================ */
@@ -250,3 +250,4 @@ calendarStyles.textContent = `
   }
 `;
 document.head.appendChild(calendarStyles);
+

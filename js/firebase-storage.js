@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MAK Platform v3.0 - Firebase Storage Operations
  * Handles file uploads to Firebase Cloud Storage
  */
@@ -256,3 +256,4 @@ const FirebaseStorage = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = FirebaseStorage;
 }
+

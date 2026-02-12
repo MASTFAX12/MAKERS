@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ… | MAK Team HQ</title>
-    <meta name="description" content="ظ„ظˆط­ط© طھط­ظƒظ… ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²">
+    <title>لوحة التحكم | MAK Team HQ</title>
+    <meta name="description" content="لوحة تحكم فريق ميكرز">
     <meta name="theme-color" content="#0a0a0f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -58,19 +58,19 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="index.html">ط§ظ„ط±ط¦ظٹط³ظٹط©</a></li>
-                <li><a href="team.html">ط§ظ„ظپط±ظٹظ‚</a></li>
-                <li><a href="projects.html">ط§ظ„ظ…ط´ط§ط±ظٹط¹</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="team.html">الفريق</a></li>
+                <li><a href="projects.html">المشاريع</a></li>
                 <li>
                     <div class="notification-bell" onclick="toggleNotifications()">
-                        ًں””
+                        🔔
                         <div class="notification-dropdown" id="notificationDropdown">
-                            <div class="notification-header">ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ</div>
+                            <div class="notification-header">الإشعارات</div>
                             <div class="notification-list" id="notificationList"></div>
                         </div>
                     </div>
                 </li>
-                <li><a href="#" onclick="Auth.logout()" class="btn btn-secondary">طھط³ط¬ظٹظ„ ط®ط±ظˆط¬</a></li>
+                <li><a href="#" onclick="Auth.logout()" class="btn btn-secondary">تسجيل خروج</a></li>
             </ul>
 
             <div class="menu-toggle" onclick="toggleMobileMenu()">
@@ -83,7 +83,7 @@
 
     <!-- Mobile Sidebar Toggle -->
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
-        âک°
+        ☰
     </button>
 
     <!-- Dashboard Container -->
@@ -92,7 +92,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="assets/images/logo.jpg" alt="MAK" class="sidebar-logo">
-                <div class="sidebar-title">ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ…</div>
+                <div class="sidebar-title">لوحة التحكم</div>
             </div>
 
             <!-- Level Badge in Sidebar -->
@@ -102,49 +102,49 @@
                 <li>
                     <a href="#" class="active" data-section="overview" onclick="showSection('overview')">
                         <span class="menu-icon"><i data-lucide="layout-dashboard"></i></span>
-                        ظ†ط¸ط±ط© ط¹ط§ظ…ط©
+                        نظرة عامة
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="projects" data-requires-permission="projects_view" onclick="showSection('projects')">
                         <span class="menu-icon"><i data-lucide="folder-kanban"></i></span>
-                        ط§ظ„ظ…ط´ط§ط±ظٹط¹
+                        المشاريع
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="add-project" data-requires-permission="projects_create" onclick="showSection('add-project')">
                         <span class="menu-icon"><i data-lucide="folder-plus"></i></span>
-                        ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
+                        مشروع جديد
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="calendar" data-requires-permission="projects_view" onclick="showSection('calendar')">
                         <span class="menu-icon"><i data-lucide="calendar-days"></i></span>
-                        ط§ظ„طھظ‚ظˆظٹظ…
+                        التقويم
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="members" data-requires-permission="members_view" onclick="showSection('members')">
                         <span class="menu-icon"><i data-lucide="users"></i></span>
-                        ط§ظ„ط£ط¹ط¶ط§ط،
+                        الأعضاء
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="achievements" data-requires-permission="projects_view" onclick="showSection('achievements')">
                         <span class="menu-icon"><i data-lucide="trophy"></i></span>
-                        ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ
+                        الإنجازات
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="activity" data-requires-permission="activity_view" onclick="showSection('activity')">
                         <span class="menu-icon"><i data-lucide="activity"></i></span>
-                        ط³ط¬ظ„ ط§ظ„ظ†ط´ط§ط·ط§طھ
+                        سجل النشاطات
                     </a>
                 </li>
                 <li>
                     <a href="#" data-section="settings" data-requires-permission="settings_view" onclick="showSection('settings')">
                         <span class="menu-icon"><i data-lucide="settings"></i></span>
-                        ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ
+                        الإعدادات
                     </a>
                 </li>
             </ul>
@@ -162,11 +162,11 @@
             <section id="section-overview" class="dashboard-section">
                 <div class="dashboard-header">
                     <div class="dashboard-welcome">
-                        <h1 id="greetingText">ظ…ط±ط­ط¨ط§ظ‹طŒ ظ…طµط·ظپظ‰</h1>
+                        <h1 id="greetingText">مرحباً، مصطفى</h1>
                         <p class="dashboard-date" id="currentDate"></p>
                     </div>
                     <button class="btn btn-primary btn-shine" data-requires-permission="projects_create" onclick="showSection('add-project')">
-                        â‍• ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
+                        ➕ مشروع جديد
                     </button>
                 </div>
 
@@ -178,7 +178,7 @@
                     <!-- Contribution Panel -->
                     <div class="panel">
                         <div class="panel-header">
-                            <h3 class="panel-title">ًں“ˆ ظ…ط³ط§ظ‡ظ…ط§طھ ط§ظ„ط£ط¹ط¶ط§ط،</h3>
+                            <h3 class="panel-title">📈 مساهمات الأعضاء</h3>
                         </div>
                         <div class="panel-body">
                             <ul class="contribution-list" id="dashContribution"></ul>
@@ -188,7 +188,7 @@
                     <!-- Deadlines Panel -->
                     <div class="panel">
                         <div class="panel-header">
-                            <h3 class="panel-title">ًں“… ط§ظ„ظ…ظˆط§ط¹ظٹط¯ ط§ظ„ظ‚ط§ط¯ظ…ط©</h3>
+                            <h3 class="panel-title">📅 المواعيد القادمة</h3>
                         </div>
                         <div class="panel-body">
                             <ul class="deadline-list" id="dashDeadlines"></ul>
@@ -199,7 +199,7 @@
                 <!-- Subject Stats -->
                 <div class="panel mt-4">
                     <div class="panel-header">
-                        <h3 class="panel-title">ًں“ڑ ط§ظ„ظ…ط´ط§ط±ظٹط¹ ط­ط³ط¨ ط§ظ„ظ…ط§ط¯ط©</h3>
+                        <h3 class="panel-title">📚 المشاريع حسب المادة</h3>
                     </div>
                     <div class="panel-body">
                         <ul class="subject-stats" id="dashSubjects"></ul>
@@ -211,23 +211,23 @@
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
                     <div class="card card-3d" data-requires-permission="projects_create" onclick="showSection('add-project')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">â‍•</div>
-                        <div style="font-weight: 600;">ط¥ط¶ط§ظپط© ظ…ط´ط±ظˆط¹</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">➕</div>
+                        <div style="font-weight: 600;">إضافة مشروع</div>
                     </div>
                     <div class="card card-3d" onclick="showSection('calendar')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًں“…</div>
-                        <div style="font-weight: 600;">ط§ظ„طھظ‚ظˆظٹظ…</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📅</div>
+                        <div style="font-weight: 600;">التقويم</div>
                     </div>
                     <div class="card card-3d" onclick="showSection('achievements')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًںڈ†</div>
-                        <div style="font-weight: 600;">ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏆</div>
+                        <div style="font-weight: 600;">الإنجازات</div>
                     </div>
                     <div class="card card-3d" onclick="App.exportData()"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًں“¤</div>
-                        <div style="font-weight: 600;">طھطµط¯ظٹط±</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📤</div>
+                        <div style="font-weight: 600;">تصدير</div>
                     </div>
                 </div>
             </section>
@@ -235,26 +235,26 @@
             <!-- Projects Section -->
             <section id="section-projects" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>ًں“‹ ط¥ط¯ط§ط±ط© ط§ظ„ظ…ط´ط§ط±ظٹط¹</h1>
+                    <h1>📋 إدارة المشاريع</h1>
                     <button class="btn btn-primary btn-shine" data-requires-permission="projects_create" onclick="showSection('add-project')">
-                        â‍• ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
+                        ➕ مشروع جديد
                     </button>
                 </div>
 
                 <div class="filter-bar">
                     <div class="filter-group">
-                        <span class="filter-label">ط§ظ„ط­ط§ظ„ط©:</span>
+                        <span class="filter-label">الحالة:</span>
                         <select class="filter-select" id="dashFilterStatus" onchange="loadProjects()">
-                            <option value="">ط§ظ„ظƒظ„</option>
-                            <option value="new">ط¬ط¯ظٹط¯</option>
-                            <option value="in_progress">ط¬ط§ط±ظٹ</option>
-                            <option value="completed">ظ…ظƒطھظ…ظ„</option>
+                            <option value="">الكل</option>
+                            <option value="new">جديد</option>
+                            <option value="in_progress">جاري</option>
+                            <option value="completed">مكتمل</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <span class="filter-label">ط§ظ„ظ…ط§ط¯ط©:</span>
+                        <span class="filter-label">المادة:</span>
                         <select class="filter-select" id="dashFilterSubject" onchange="loadProjects()">
-                            <option value="">ط§ظ„ظƒظ„</option>
+                            <option value="">الكل</option>
                         </select>
                     </div>
                 </div>
@@ -265,36 +265,36 @@
             <!-- Add Project Section -->
             <section id="section-add-project" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>â‍• ط¥ط¶ط§ظپط© ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯</h1>
+                    <h1>➕ إضافة مشروع جديد</h1>
                 </div>
 
                 <div class="card cyber-border" style="max-width: 700px;">
                     <form id="newProjectForm">
                         <!-- Project Title -->
                         <div class="form-group">
-                            <label class="form-label">ًں“‌ ط¹ظ†ظˆط§ظ† ط§ظ„ظ…ط´ط±ظˆط¹ *</label>
+                            <label class="form-label">📝 عنوان المشروع *</label>
                             <input type="text" class="form-input" id="projectTitle" required
-                                placeholder="ظ…ط«ط§ظ„: ظ…ط´ط±ظˆط¹ ط¥ط¯ط§ط±ط© ط§ظ„ظ…ظ„ظپط§طھ">
+                                placeholder="مثال: مشروع إدارة الملفات">
                         </div>
 
                         <!-- Description -->
                         <div class="form-group">
-                            <label class="form-label">ًں“‹ ط§ظ„ظˆطµظپ</label>
+                            <label class="form-label">📋 الوصف</label>
                             <textarea class="form-textarea" id="projectDescription"
-                                placeholder="ظˆطµظپ ظ…ط®طھطµط± ظ„ظ„ظ…ط´ط±ظˆط¹..."></textarea>
+                                placeholder="وصف مختصر للمشروع..."></textarea>
                         </div>
 
                         <!-- Subject -->
                         <div class="form-group">
-                            <label class="form-label">ًں“ڑ ط§ظ„ظ…ط§ط¯ط© *</label>
+                            <label class="form-label">📚 المادة *</label>
                             <select class="form-select" id="projectSubject" required onchange="updateMemberSelection()">
-                                <option value="">ط§ط®طھط± ط§ظ„ظ…ط§ط¯ط©</option>
+                                <option value="">اختر المادة</option>
                             </select>
                         </div>
 
                         <!-- Team Size -->
                         <div class="form-group">
-                            <label class="form-label">ًں‘¥ ط¹ط¯ط¯ ط§ظ„ط£ط¹ط¶ط§ط، ط§ظ„ظ…ط·ظ„ظˆط¨ *</label>
+                            <label class="form-label">👥 عدد الأعضاء المطلوب *</label>
                             <div class="team-size-selector">
                                 <div class="team-size-option">
                                     <input type="radio" name="teamSize" value="1" id="size1"
@@ -331,36 +331,36 @@
 
                         <!-- Deadline -->
                         <div class="form-group">
-                            <label class="form-label">âڈ° ط§ظ„ظ…ظˆط¹ط¯ ط§ظ„ظ†ظ‡ط§ط¦ظٹ *</label>
+                            <label class="form-label">⏰ الموعد النهائي *</label>
                             <input type="date" class="form-input" id="projectDeadline" required>
                         </div>
 
                         <!-- Priority -->
                         <div class="form-group">
-                            <label class="form-label">âڑ، ط§ظ„ط£ظ‡ظ…ظٹط©</label>
+                            <label class="form-label">⚡ الأهمية</label>
                             <div class="priority-selector">
                                 <div class="priority-option low">
                                     <input type="radio" name="priority" value="low" id="priorityLow">
-                                    <label for="priorityLow">ط¹ط§ط¯ظٹ</label>
+                                    <label for="priorityLow">عادي</label>
                                 </div>
                                 <div class="priority-option normal">
                                     <input type="radio" name="priority" value="normal" id="priorityNormal" checked>
-                                    <label for="priorityNormal">ظ…طھظˆط³ط·</label>
+                                    <label for="priorityNormal">متوسط</label>
                                 </div>
                                 <div class="priority-option high">
                                     <input type="radio" name="priority" value="high" id="priorityHigh">
-                                    <label for="priorityHigh">ظ…ظ‡ظ…</label>
+                                    <label for="priorityHigh">مهم</label>
                                 </div>
                                 <div class="priority-option urgent">
                                     <input type="radio" name="priority" value="urgent" id="priorityUrgent">
-                                    <label for="priorityUrgent">ط¹ط§ط¬ظ„</label>
+                                    <label for="priorityUrgent">عاجل</label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Team Selection -->
                         <div class="form-group">
-                            <label class="form-label">ًں§  ط§ط®طھط± ط§ظ„ظپط±ظٹظ‚ (ط§ظ„ط®ظˆط§ط±ط²ظ…ظٹط© طھظ‚طھط±ط­ ط§ظ„ط£ظپط¶ظ„ â­گ)</label>
+                            <label class="form-label">🧠 اختر الفريق (الخوارزمية تقترح الأفضل ⭐)</label>
                             <div class="member-selection" id="memberSelection">
                                 <!-- Will be populated by JavaScript -->
                             </div>
@@ -369,7 +369,7 @@
                         <!-- Submit -->
                         <div class="form-group" style="margin-top: 2rem;">
                             <button type="submit" class="btn btn-primary btn-shine" style="width: 100%;">
-                                ًںڑ€ ط¥ظ†ط´ط§ط، ط§ظ„ظ…ط´ط±ظˆط¹
+                                🚀 إنشاء المشروع
                             </button>
                         </div>
                     </form>
@@ -379,8 +379,8 @@
             <!-- Calendar Section -->
             <section id="section-calendar" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>ًں“… ط§ظ„طھظ‚ظˆظٹظ…</h1>
-                    <button class="btn btn-secondary" onclick="Calendar.goToToday()">ط§ظ„ظٹظˆظ…</button>
+                    <h1>📅 التقويم</h1>
+                    <button class="btn btn-secondary" onclick="Calendar.goToToday()">اليوم</button>
                 </div>
 
                 <div id="calendarContainer" style="max-width: 800px;"></div>
@@ -389,7 +389,7 @@
             <!-- Members Section -->
             <section id="section-members" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>ًں‘¥ ط¥ط¯ط§ط±ط© ط§ظ„ط£ط¹ط¶ط§ط،</h1>
+                    <h1>👥 إدارة الأعضاء</h1>
                 </div>
 
                 <div class="members-grid" id="dashMembers"></div>
@@ -398,22 +398,22 @@
             <!-- Achievements Section -->
             <section id="section-achievements" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>ًںڈ† ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ ظˆط§ظ„ظ…ط³طھظˆظٹط§طھ</h1>
+                    <h1>🏆 الإنجازات والمستويات</h1>
                 </div>
 
                 <!-- Level Card -->
                 <div class="card cyber-border" style="max-width: 400px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">ًں“ٹ ظ…ط³طھظˆظ‰ ط§ظ„ظپط±ظٹظ‚</h3>
+                    <h3 style="margin-bottom: 1rem;">📊 مستوى الفريق</h3>
                     <div id="achievementLevel"></div>
                 </div>
 
                 <!-- Achievements Grid -->
                 <div class="card" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 1.5rem;">ًںژ–ï¸ڈ ط§ظ„ط£ظˆط³ظ…ط©</h3>
+                    <h3 style="margin-bottom: 1.5rem;">🎖️ الأوسمة</h3>
                     <div class="badge-container" id="achievementsBadges" style="justify-content: center;"></div>
 
                     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                        <h4 style="margin-bottom: 1rem;">ًں“‹ ظ‚ط§ط¦ظ…ط© ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ</h4>
+                        <h4 style="margin-bottom: 1rem;">📋 قائمة الإنجازات</h4>
                         <div id="achievementsList"></div>
                     </div>
                 </div>
@@ -424,7 +424,7 @@
                 <div class="dashboard-header">
                     <h1 class="section-header-icon">
                         <i data-lucide="activity"></i>
-                        ط³ط¬ظ„ ط§ظ„ظ†ط´ط§ط·ط§طھ
+                        سجل النشاطات
                     </h1>
                 </div>
 
@@ -440,19 +440,19 @@
                 <div class="dashboard-header">
                     <h1 class="section-header-icon">
                         <i data-lucide="settings"></i>
-                        ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ
+                        الإعدادات
                     </h1>
                 </div>
 
                 <!-- User Profile Card -->
                 <div class="card" style="max-width: 600px; margin-bottom: 1.5rem;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="user"></i> ط­ط³ط§ط¨ظٹ</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="user"></i> حسابي</h3>
                     <div class="user-badge" id="currentUserBadge">
                         <!-- Will be populated by JavaScript -->
                     </div>
                 </div>
 
-                                <div class="card" id="leaderAccessCard" style="max-width: 800px; margin-bottom: 1.5rem; display: none;">
+                <div class="card" id="leaderAccessCard" style="max-width: 800px; margin-bottom: 1.5rem; display: none;">
                     <h3 class="mb-3 icon-text"><i data-lucide="crown"></i> إدارة دخول الفريق (القائد فقط)</h3>
 
                     <div class="form-group">
@@ -515,30 +515,30 @@
                 </div>
 
                 <div class="card" style="max-width: 600px; margin-bottom: 1.5rem;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="volume-2"></i> ط§ظ„طµظˆطھ</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="volume-2"></i> الصوت</h3>
                     <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
                         <input type="checkbox" id="soundToggle" checked onchange="Effects.toggleSound()">
-                        <span>طھظپط¹ظٹظ„ ط§ظ„ظ…ط¤ط«ط±ط§طھ ط§ظ„طµظˆطھظٹط©</span>
+                        <span>تفعيل المؤثرات الصوتية</span>
                     </label>
                 </div>
 
                 <div class="card" style="max-width: 600px;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="database"></i> ط§ظ„ط¨ظٹط§ظ†ط§طھ</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="database"></i> البيانات</h3>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                         <button class="btn btn-secondary icon-text" onclick="App.exportData()">
                             <i data-lucide="download"></i>
-                            طھطµط¯ظٹط± ط§ظ„ط¨ظٹط§ظ†ط§طھ
+                            تصدير البيانات
                         </button>
                         <label class="btn btn-secondary icon-text" style="cursor: pointer;">
                             <i data-lucide="upload"></i>
-                            ط§ط³طھظٹط±ط§ط¯ ط§ظ„ط¨ظٹط§ظ†ط§طھ
+                            استيراد البيانات
                             <input type="file" accept=".json" onchange="App.importData(this.files[0])"
                                 style="display: none;">
                         </label>
                         <button class="btn btn-secondary icon-text"
                             style="border-color: var(--danger); color: var(--danger);" onclick="App.resetData()">
                             <i data-lucide="trash-2"></i>
-                            ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†
+                            إعادة تعيين
                         </button>
                     </div>
                 </div>
@@ -968,7 +968,7 @@
                     });
 
                     Effects.showConfetti();
-                    App.showToast('تم إنشاء المشروع بنجاح! 🎉', 'success');
+                    App.showToast('تم إنشاء المشروع بنجاح!', 'success');
                     Effects.initAchievements();
 
                     e.target.reset();
@@ -1084,6 +1084,7 @@
 </body>
 
 </html>
+
 
 
 

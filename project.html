@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طھظپط§طµظٹظ„ ط§ظ„ظ…ط´ط±ظˆط¹ | MAK Team HQ</title>
-    <meta name="description" content="ط¹ط±ط¶ طھظپط§طµظٹظ„ ظ…ط´ط±ظˆط¹ ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²">
+    <title>تفاصيل المشروع | MAK Team HQ</title>
+    <meta name="description" content="عرض تفاصيل مشروع فريق ميكرز">
     <meta name="theme-color" content="#0a0a0f">
 
     <!-- Fonts -->
@@ -350,10 +350,10 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="index.html">ط§ظ„ط±ط¦ظٹط³ظٹط©</a></li>
-                <li><a href="team.html">ط§ظ„ظپط±ظٹظ‚</a></li>
-                <li><a href="projects.html" class="active">ط§ظ„ظ…ط´ط§ط±ظٹط¹</a></li>
-                <li><a data-team-login href="login.html" class="btn btn-primary">ط¯ط®ظˆظ„ ط§ظ„ط£ط¹ط¶ط§ط،</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="team.html">الفريق</a></li>
+                <li><a href="projects.html" class="active">المشاريع</a></li>
+                <li><a data-team-login href="login.html" class="btn btn-primary">دخول الأعضاء</a></li>
             </ul>
 
             <div class="menu-toggle">
@@ -367,7 +367,7 @@
     <!-- Project Detail Page -->
     <div class="project-detail-page">
         <div class="container">
-            <a href="projects.html" class="back-link">â†’ ط§ظ„ط¹ظˆط¯ط© ظ„ظ„ظ…ط´ط§ط±ظٹط¹</a>
+            <a href="projects.html" class="back-link">→ العودة للمشاريع</a>
 
             <!-- Project Hero -->
             <div class="project-hero" id="projectHero">
@@ -384,7 +384,7 @@
 
                     <!-- Files -->
                     <div class="files-section" id="filesSection">
-                        <h3><i data-lucide="paperclip"></i> ظ…ظ„ظپط§طھ ط§ظ„ظ…ط´ط±ظˆط¹</h3>
+                        <h3><i data-lucide="paperclip"></i> ملفات المشروع</h3>
                         <div class="files-grid" id="filesGrid">
                             <!-- Will be populated by JavaScript -->
                         </div>
@@ -392,7 +392,7 @@
 
                     <!-- Timeline -->
                     <div class="project-timeline" id="projectTimeline">
-                        <h3><i data-lucide="calendar"></i> ط§ظ„ط¬ط¯ظˆظ„ ط§ظ„ط²ظ…ظ†ظٹ</h3>
+                        <h3><i data-lucide="calendar"></i> الجدول الزمني</h3>
                         <div id="timelineContent">
                             <!-- Will be populated by JavaScript -->
                         </div>
@@ -402,7 +402,7 @@
                 <div class="project-sidebar">
                     <!-- Team -->
                     <div class="team-section" id="teamSection">
-                        <h4><i data-lucide="users"></i> ظپط±ظٹظ‚ ط§ظ„ط¹ظ…ظ„</h4>
+                        <h4><i data-lucide="users"></i> فريق العمل</h4>
                         <div id="teamMembers">
                             <!-- Will be populated by JavaScript -->
                         </div>
@@ -410,7 +410,7 @@
 
                     <!-- Grade -->
                     <div class="grade-section" id="gradeSection">
-                        <h4><i data-lucide="bar-chart-3"></i> ط§ظ„طھظ‚ظٹظٹظ…</h4>
+                        <h4><i data-lucide="bar-chart-3"></i> التقييم</h4>
                         <div id="gradeContent">
                             <!-- Will be populated by JavaScript -->
                         </div>
@@ -424,8 +424,8 @@
     <footer class="footer">
         <div class="container">
             <img src="assets/images/logo.jpg" alt="MAK Logo" class="footer-logo">
-            <p class="footer-text">آ© 2026 Makers Team | MAK</p>
-            <p class="footer-text">ظ‡ظ†ط¯ط³ط© طھظ‚ظ†ظٹط§طھ ط§ظ„ط£ظ…ظ† ط§ظ„ط³ظٹط¨ط±ط§ظ†ظٹ - ط§ظ„ظ…ط±ط­ظ„ط© ط§ظ„ط£ظˆظ„ظ‰</p>
+            <p class="footer-text">© 2026 Makers Team | MAK</p>
+            <p class="footer-text">هندسة تقنيات الأمن السيبراني - المرحلة الأولى</p>
         </div>
     </footer>
 
@@ -455,15 +455,15 @@
             }
 
             const settings = App.getSettings();
-            const subject = settings.subjects.find(s => s.id === project.subject) || { name: 'ط؛ظٹط± ظ…ط­ط¯ط¯', icon: 'folder' };
+            const subject = settings.subjects.find(s => s.id === project.subject) || { name: 'غير محدد', icon: 'folder' };
             const members = Members.getAll();
 
             // Status mapping
             const statusTexts = {
-                'new': 'ط¬ط¯ظٹط¯',
-                'in_progress': 'ظ‚ظٹط¯ ط§ظ„ط¹ظ…ظ„',
-                'review': 'ظ…ط±ط§ط¬ط¹ط©',
-                'completed': 'ظ…ظƒطھظ…ظ„'
+                'new': 'جديد',
+                'in_progress': 'قيد العمل',
+                'review': 'مراجعة',
+                'completed': 'مكتمل'
             };
 
             const statusClasses = {
@@ -478,23 +478,23 @@
         <div class="project-badge"><i data-lucide="${subject.icon}" style="width:16px;height:16px;"></i> ${subject.name}</div>
         <h1 class="project-main-title">${project.title}</h1>
         <span class="status-badge ${statusClasses[project.status]}">${statusTexts[project.status]}</span>
-        ${project.status === 'completed' ? '<div class="verification-badge"><i data-lucide="check-circle"></i> طھظ… ط§ظ„طھط­ظ‚ظ‚ ظ…ظ† ط§ظ„ط¥ظ†ط¬ط§ط²</div>' : ''}
+        ${project.status === 'completed' ? '<div class="verification-badge"><i data-lucide="check-circle"></i> تم التحقق من الإنجاز</div>' : ''}
         <div class="project-hero-actions">
-          ${project.demoUrl ? `<a href="${project.demoUrl}" target="_blank" class="btn btn-primary btn-shine btn-lg"><i data-lucide="rocket"></i> طھط´ط؛ظٹظ„ ط§ظ„ظ…ط´ط±ظˆط¹</a>` : ''}
-          ${project.repoUrl ? `<a href="${project.repoUrl}" target="_blank" class="btn btn-secondary btn-lg"><i data-lucide="github"></i> ط§ظ„ظƒظˆط¯ ط§ظ„ظ…طµط¯ط±ظٹ</a>` : ''}
+          ${project.demoUrl ? `<a href="${project.demoUrl}" target="_blank" class="btn btn-primary btn-shine btn-lg"><i data-lucide="rocket"></i> تشغيل المشروع</a>` : ''}
+          ${project.repoUrl ? `<a href="${project.repoUrl}" target="_blank" class="btn btn-secondary btn-lg"><i data-lucide="github"></i> الكود المصدري</a>` : ''}
         </div>
         <div class="project-meta-row">
           <div class="meta-item">
             <span class="meta-icon"><i data-lucide="calendar" style="width:20px;height:20px;"></i></span>
             <div>
-              <div class="meta-label">طھط§ط±ظٹط® ط§ظ„ط¥ظ†ط´ط§ط،</div>
+              <div class="meta-label">تاريخ الإنشاء</div>
               <div class="meta-value">${new Date(project.createdDate).toLocaleDateString('ar-IQ')}</div>
             </div>
           </div>
           <div class="meta-item">
             <span class="meta-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></span>
             <div>
-              <div class="meta-label">ط§ظ„ظ…ظˆط¹ط¯ ط§ظ„ظ†ظ‡ط§ط¦ظٹ</div>
+              <div class="meta-label">الموعد النهائي</div>
               <div class="meta-value">${new Date(project.deadline).toLocaleDateString('ar-IQ')}</div>
             </div>
           </div>
@@ -502,7 +502,7 @@
           <div class="meta-item">
             <span class="meta-icon"><i data-lucide="check-circle" style="width:20px;height:20px;color:var(--success)"></i></span>
             <div>
-              <div class="meta-label">طھط§ط±ظٹط® ط§ظ„ط¥ظ†ط¬ط§ط²</div>
+              <div class="meta-label">تاريخ الإنجاز</div>
               <div class="meta-value">${new Date(project.completedDate).toLocaleDateString('ar-IQ')}</div>
             </div>
           </div>
@@ -510,7 +510,7 @@
           <div class="meta-item">
             <span class="meta-icon"><i data-lucide="users" style="width:20px;height:20px;"></i></span>
             <div>
-              <div class="meta-label">ط¹ط¯ط¯ ط§ظ„ط£ط¹ط¶ط§ط،</div>
+              <div class="meta-label">عدد الأعضاء</div>
               <div class="meta-value">${project.assignedMembers.length}</div>
             </div>
           </div>
@@ -519,8 +519,8 @@
 
             // Render Description
             document.getElementById('projectDescription').innerHTML = `
-        <h3><i data-lucide="file-text" style="width:18px;height:18px;"></i> ظˆطµظپ ط§ظ„ظ…ط´ط±ظˆط¹</h3>
-        <p class="project-description-text">${project.description || 'ظ„ظ… ظٹطھظ… ط¥ط¶ط§ظپط© ظˆطµظپ ظ„ظ‡ط°ط§ ط§ظ„ظ…ط´ط±ظˆط¹.'}</p>
+        <h3><i data-lucide="file-text" style="width:18px;height:18px;"></i> وصف المشروع</h3>
+        <p class="project-description-text">${project.description || 'لم يتم إضافة وصف لهذا المشروع.'}</p>
       `;
 
             // Render Files
@@ -534,7 +534,7 @@
               <div class="file-name">${file.name}</div>
               <div class="file-size">${file.size || ''}</div>
               <div class="file-actions">
-                <button class="btn btn-secondary file-action-btn" onclick="event.stopPropagation(); downloadFile('${file.data || file.url}', '${file.name}')"><i data-lucide="download" style="width:14px;height:14px;"></i> طھط­ظ…ظٹظ„</button>
+                <button class="btn btn-secondary file-action-btn" onclick="event.stopPropagation(); downloadFile('${file.data || file.url}', '${file.name}')"><i data-lucide="download" style="width:14px;height:14px;"></i> تحميل</button>
               </div>
             </div>
           `;
@@ -543,7 +543,7 @@
                 filesGrid.innerHTML = `
           <div class="empty-files" style="grid-column: 1 / -1;">
             <div class="empty-files-icon"><i data-lucide="folder-open" style="width:48px;height:48px;"></i></div>
-            <p>ظ„ظ… ظٹطھظ… ط¥ط¶ط§ظپط© ظ…ظ„ظپط§طھ ط¨ط¹ط¯</p>
+            <p>لم يتم إضافة ملفات بعد</p>
           </div>
         `;
             }
@@ -568,13 +568,13 @@
             if (project.grade) {
                 gradeContent.innerHTML = `
           <div class="grade-display">${project.grade}</div>
-          <div class="grade-label">ظ…ظ† 100</div>
+          <div class="grade-label">من 100</div>
           ${project.feedback ? `<p style="margin-top: 1rem; color: var(--text-secondary);">${project.feedback}</p>` : ''}
         `;
             } else {
                 gradeContent.innerHTML = `
           <div style="color: var(--text-muted); padding: 1rem;">
-            ${project.status === 'completed' ? 'ظپظٹ ط§ظ†طھط¸ط§ط± ط§ظ„طھظ‚ظٹظٹظ…' : 'ط³ظٹطھظ… ط§ظ„طھظ‚ظٹظٹظ… ط¨ط¹ط¯ ط§ظ„ط¥ظ†ط¬ط§ط²'}
+            ${project.status === 'completed' ? 'في انتظار التقييم' : 'سيتم التقييم بعد الإنجاز'}
           </div>
         `;
             }
@@ -584,7 +584,7 @@
         <div class="timeline-item-row">
           <div class="timeline-icon completed"><i data-lucide="clipboard-list" style="width:18px;height:18px;"></i></div>
           <div>
-            <div style="font-weight: 600;">طھظ… ط¥ظ†ط´ط§ط، ط§ظ„ظ…ط´ط±ظˆط¹</div>
+            <div style="font-weight: 600;">تم إنشاء المشروع</div>
             <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.createdDate).toLocaleDateString('ar-IQ')}</div>
           </div>
         </div>
@@ -592,8 +592,8 @@
         <div class="timeline-item-row">
           <div class="timeline-icon completed"><i data-lucide="play-circle" style="width:18px;height:18px;"></i></div>
           <div>
-            <div style="font-weight: 600;">ط¨ط¯ط، ط§ظ„ط¹ظ…ظ„</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">طھظ… طھط¹ظٹظٹظ† ${project.assignedMembers.length} ط£ط¹ط¶ط§ط،</div>
+            <div style="font-weight: 600;">بدء العمل</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">تم تعيين ${project.assignedMembers.length} أعضاء</div>
           </div>
         </div>
         ` : ''}
@@ -601,7 +601,7 @@
         <div class="timeline-item-row">
           <div class="timeline-icon completed"><i data-lucide="check-circle" style="width:18px;height:18px;color:var(--success);"></i></div>
           <div>
-            <div style="font-weight: 600;">طھظ… ط§ظ„ط¥ظ†ط¬ط§ط²</div>
+            <div style="font-weight: 600;">تم الإنجاز</div>
             <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.completedDate).toLocaleDateString('ar-IQ')}</div>
           </div>
         </div>
@@ -609,7 +609,7 @@
         <div class="timeline-item-row">
           <div class="timeline-icon"><i data-lucide="hourglass" style="width:18px;height:18px;"></i></div>
           <div>
-            <div style="font-weight: 600;">ط§ظ„ظ…ظˆط¹ط¯ ط§ظ„ظ†ظ‡ط§ط¦ظٹ</div>
+            <div style="font-weight: 600;">الموعد النهائي</div>
             <div style="font-size: 0.85rem; color: var(--text-secondary);">${new Date(project.deadline).toLocaleDateString('ar-IQ')}</div>
           </div>
         </div>
@@ -725,4 +725,5 @@
 </body>
 
 </html>
+
 

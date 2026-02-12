@@ -42,7 +42,7 @@ const ProjectFeatures = {
 
             // Log activity
             ActivityLog.log('comment_added', session.memberId, {
-                message: `${session.name} ط£ط¶ط§ظپ طھط¹ظ„ظٹظ‚ط§ظ‹ ط¹ظ„ظ‰ ط§ظ„ظ…ط´ط±ظˆط¹`,
+                message: `${session.name} أضاف تعليقاً على المشروع`,
                 projectId: projectId
             });
 
@@ -51,7 +51,7 @@ const ProjectFeatures = {
                 if (memberId !== session.memberId) {
                     await Notifications.create({
                         type: 'comment_added',
-                        title: `طھط¹ظ„ظٹظ‚ ط¬ط¯ظٹط¯ ط¹ظ„ظ‰ "${project.title}"`,
+                        title: `تعليق جديد على "${project.title}"`,
                         message: content.substring(0, 50) + (content.length > 50 ? '...' : ''),
                         targetMember: memberId,
                         projectId: projectId
@@ -75,7 +75,7 @@ const ProjectFeatures = {
 
             // Only allow owner or leader to delete
             const comment = project.comments[commentIndex];
-            if (comment.memberId !== session.memberId && session.role !== 'ط§ظ„ظ‚ط§ط¦ط¯') {
+            if (comment.memberId !== session.memberId && !Auth.isLeader(session)) {
                 return false;
             }
 
@@ -104,18 +104,18 @@ const ProjectFeatures = {
                 <div class="comments-section">
                     <h3 class="comments-title">
                         <i data-lucide="message-circle"></i>
-                        ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ (${comments.length})
+                        التعليقات (${comments.length})
                     </h3>
                     
                     <div class="comment-form">
                         <div class="comment-input-wrapper">
                             <textarea id="newCommentInput" 
                                       class="form-textarea comment-input" 
-                                      placeholder="ط£ط¶ظپ طھط¹ظ„ظٹظ‚ط§ظ‹..."
+                                      placeholder="أضف تعليقاً..."
                                       rows="2"></textarea>
                             <button class="btn btn-primary btn-sm" onclick="ProjectFeatures.Comments.submit('${projectId}')">
                                 <i data-lucide="send"></i>
-                                ط¥ط±ط³ط§ظ„
+                                إرسال
                             </button>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ const ProjectFeatures = {
                         ${comments.length === 0 ? `
                             <div class="comments-empty">
                                 <i data-lucide="message-square" style="width:32px;height:32px;opacity:0.3;"></i>
-                                <p>ظ„ط§ طھظˆط¬ط¯ طھط¹ظ„ظٹظ‚ط§طھ ط¨ط¹ط¯</p>
+                                <p>لا توجد تعليقات بعد</p>
                             </div>
                         ` : comments.map(c => this.renderComment(c, session)).join('')}
                     </div>
@@ -139,7 +139,7 @@ const ProjectFeatures = {
          */
         renderComment(comment, session) {
             const isOwner = session && comment.memberId === session.memberId;
-            const isLeader = session && session.role === 'ط§ظ„ظ‚ط§ط¦ط¯';
+            const isLeader = session && Auth.isLeader(session);
             const canDelete = isOwner || isLeader;
             const timeAgo = this.getTimeAgo(comment.createdAt);
 
@@ -176,10 +176,10 @@ const ProjectFeatures = {
             const comment = await this.add(projectId, content);
 
             if (comment) {
-                App.showToast('طھظ… ط¥ط¶ط§ظپط© ط§ظ„طھط¹ظ„ظٹظ‚', 'success');
+                App.showToast('تم إضافة التعليق', 'success');
                 this.render(projectId, 'commentsContainer');
             } else {
-                App.showToast('ظپط´ظ„ ظپظٹ ط¥ط¶ط§ظپط© ط§ظ„طھط¹ظ„ظٹظ‚', 'error');
+                App.showToast('فشل في إضافة التعليق', 'error');
                 input.value = content;
             }
 
@@ -190,10 +190,10 @@ const ProjectFeatures = {
          * Confirm delete
          */
         confirmDelete(projectId, commentId) {
-            if (confirm('ظ‡ظ„ طھط±ظٹط¯ ط­ط°ظپ ظ‡ط°ط§ ط§ظ„طھط¹ظ„ظٹظ‚طں')) {
+            if (confirm('هل تريد حذف هذا التعليق؟')) {
                 this.delete(projectId, commentId).then(success => {
                     if (success) {
-                        App.showToast('طھظ… ط­ط°ظپ ط§ظ„طھط¹ظ„ظٹظ‚', 'info');
+                        App.showToast('تم حذف التعليق', 'info');
                         this.render(projectId, 'commentsContainer');
                     }
                 });
@@ -219,10 +219,10 @@ const ProjectFeatures = {
             const now = new Date();
             const seconds = Math.floor((now - date) / 1000);
 
-            if (seconds < 60) return 'ط§ظ„ط¢ظ†';
-            if (seconds < 3600) return `ظ…ظ†ط° ${Math.floor(seconds / 60)} ط¯`;
-            if (seconds < 86400) return `ظ…ظ†ط° ${Math.floor(seconds / 3600)} ط³`;
-            if (seconds < 604800) return `ظ…ظ†ط° ${Math.floor(seconds / 86400)} ظٹ`;
+            if (seconds < 60) return 'الآن';
+            if (seconds < 3600) return `منذ ${Math.floor(seconds / 60)} د`;
+            if (seconds < 86400) return `منذ ${Math.floor(seconds / 3600)} س`;
+            if (seconds < 604800) return `منذ ${Math.floor(seconds / 86400)} ي`;
             return date.toLocaleDateString('ar-IQ');
         }
     },
@@ -263,7 +263,7 @@ const ProjectFeatures = {
 
             // Log activity
             ActivityLog.log('subtask_added', session.memberId, {
-                message: `${session.name} ط£ط¶ط§ظپ ظ…ظ‡ظ…ط© ظپط±ط¹ظٹط©: ${subtask.title}`,
+                message: `${session.name} أضاف مهمة فرعية: ${subtask.title}`,
                 projectId: projectId
             });
 
@@ -315,7 +315,7 @@ const ProjectFeatures = {
             const project = Projects.getById(projectId);
             if (!project) return null;
 
-            App.showToast('ط¬ط§ط±ظٹ طھط­ظ„ظٹظ„ ط§ظ„ظ…ط´ط±ظˆط¹ ط¨ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ...', 'info');
+            App.showToast('جاري تحليل المشروع بالذكاء الاصطناعي...', 'info');
 
             try {
                 const breakdown = await AIFeatures.breakdownTasks(project);
@@ -330,12 +330,12 @@ const ProjectFeatures = {
                         });
                     }
 
-                    App.showToast(`طھظ… ط¥ط¶ط§ظپط© ${breakdown.tasks.length} ظ…ظ‡ط§ظ… ظپط±ط¹ظٹط©`, 'success');
+                    App.showToast(`تم إضافة ${breakdown.tasks.length} مهام فرعية`, 'success');
                     return breakdown;
                 }
             } catch (error) {
                 console.error('AI breakdown failed:', error);
-                App.showToast('ظپط´ظ„ ظپظٹ ط§ظ„طھط­ظ„ظٹظ„ ط§ظ„ط°ظƒظٹ', 'error');
+                App.showToast('فشل في التحليل الذكي', 'error');
             }
 
             return null;
@@ -359,16 +359,16 @@ const ProjectFeatures = {
                     <div class="subtasks-header">
                         <h3>
                             <i data-lucide="list-checks"></i>
-                            ط§ظ„ظ…ظ‡ط§ظ… ط§ظ„ظپط±ط¹ظٹط© (${completedCount}/${subtasks.length})
+                            المهام الفرعية (${completedCount}/${subtasks.length})
                         </h3>
                         <div class="subtasks-actions">
                             <button class="btn btn-ai btn-sm" onclick="ProjectFeatures.Subtasks.generateWithAI('${projectId}').then(() => ProjectFeatures.Subtasks.render('${projectId}', '${containerId}'))">
                                 <i data-lucide="sparkles"></i>
-                                طھظ‚ط³ظٹظ… ط°ظƒظٹ
+                                تقسيم ذكي
                             </button>
                             <button class="btn btn-secondary btn-sm" onclick="ProjectFeatures.Subtasks.showAddForm('${projectId}', '${containerId}')">
                                 <i data-lucide="plus"></i>
-                                ط¥ط¶ط§ظپط©
+                                إضافة
                             </button>
                         </div>
                     </div>
@@ -378,7 +378,7 @@ const ProjectFeatures = {
                             <div class="progress-premium">
                                 <div class="progress-premium-fill" style="width: ${progress}%"></div>
                             </div>
-                            <span class="progress-text">${progress}% ظ…ظƒطھظ…ظ„</span>
+                            <span class="progress-text">${progress}% مكتمل</span>
                         </div>
                     ` : ''}
 
@@ -388,8 +388,8 @@ const ProjectFeatures = {
                         ${subtasks.length === 0 ? `
                             <div class="subtasks-empty">
                                 <i data-lucide="list" style="width:32px;height:32px;opacity:0.3;"></i>
-                                <p>ظ„ط§ طھظˆط¬ط¯ ظ…ظ‡ط§ظ… ظپط±ط¹ظٹط©</p>
-                                <p class="text-muted">ط§ط³طھط®ط¯ظ… "طھظ‚ط³ظٹظ… ط°ظƒظٹ" ظ„ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ط§ظ‚طھط±ط§ط­ط§طھ AI</p>
+                                <p>لا توجد مهام فرعية</p>
+                                <p class="text-muted">استخدم "تقسيم ذكي" للحصول على اقتراحات AI</p>
                             </div>
                         ` : subtasks.map(s => this.renderSubtask(s, projectId, containerId, members)).join('')}
                     </div>
@@ -435,22 +435,22 @@ const ProjectFeatures = {
 
             form.innerHTML = `
                 <div class="subtask-form-inner">
-                    <input type="text" id="subtaskTitle" class="form-input" placeholder="ط¹ظ†ظˆط§ظ† ط§ظ„ظ…ظ‡ظ…ط©" required>
-                    <textarea id="subtaskDesc" class="form-textarea" placeholder="ظˆطµظپ (ط§ط®طھظٹط§ط±ظٹ)" rows="2"></textarea>
+                    <input type="text" id="subtaskTitle" class="form-input" placeholder="عنوان المهمة" required>
+                    <textarea id="subtaskDesc" class="form-textarea" placeholder="وصف (اختياري)" rows="2"></textarea>
                     <div class="form-row">
                         <select id="subtaskPriority" class="form-input">
-                            <option value="low">ظ…ظ†ط®ظپط¶ط©</option>
-                            <option value="medium" selected>ظ…طھظˆط³ط·ط©</option>
-                            <option value="high">ط¹ط§ظ„ظٹط©</option>
+                            <option value="low">منخفضة</option>
+                            <option value="medium" selected>متوسطة</option>
+                            <option value="high">عالية</option>
                         </select>
                         <select id="subtaskAssignee" class="form-input">
-                            <option value="">ط¨ط¯ظˆظ† طھط¹ظٹظٹظ†</option>
+                            <option value="">بدون تعيين</option>
                             ${members.map(m => `<option value="${m.id}">${m.name}</option>`).join('')}
                         </select>
                     </div>
                     <div class="form-actions">
-                        <button class="btn btn-primary btn-sm" onclick="ProjectFeatures.Subtasks.submitForm('${projectId}', '${containerId}')">ط¥ط¶ط§ظپط©</button>
-                        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('subtaskAddForm').classList.add('hidden')">ط¥ظ„ط؛ط§ط،</button>
+                        <button class="btn btn-primary btn-sm" onclick="ProjectFeatures.Subtasks.submitForm('${projectId}', '${containerId}')">إضافة</button>
+                        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('subtaskAddForm').classList.add('hidden')">إلغاء</button>
                     </div>
                 </div>
             `;
@@ -471,7 +471,7 @@ const ProjectFeatures = {
                 assignedTo: document.getElementById('subtaskAssignee').value || null
             });
 
-            App.showToast('طھظ… ط¥ط¶ط§ظپط© ط§ظ„ظ…ظ‡ظ…ط©', 'success');
+            App.showToast('تم إضافة المهمة', 'success');
             this.render(projectId, containerId);
         },
 
@@ -479,9 +479,9 @@ const ProjectFeatures = {
          * Confirm delete
          */
         confirmDelete(projectId, subtaskId, containerId) {
-            if (confirm('ط­ط°ظپ ظ‡ط°ظ‡ ط§ظ„ظ…ظ‡ظ…ط©طں')) {
+            if (confirm('حذف هذه المهمة؟')) {
                 this.delete(projectId, subtaskId).then(() => {
-                    App.showToast('طھظ… ط­ط°ظپ ط§ظ„ظ…ظ‡ظ…ط©', 'info');
+                    App.showToast('تم حذف المهمة', 'info');
                     this.render(projectId, containerId);
                 });
             }
@@ -491,7 +491,7 @@ const ProjectFeatures = {
          * Get priority text
          */
         getPriorityText(priority) {
-            const texts = { low: 'ظ…ظ†ط®ظپط¶ط©', medium: 'ظ…طھظˆط³ط·ط©', high: 'ط¹ط§ظ„ظٹط©' };
+            const texts = { low: 'منخفضة', medium: 'متوسطة', high: 'عالية' };
             return texts[priority] || priority;
         }
     }
@@ -501,4 +501,6 @@ const ProjectFeatures = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = ProjectFeatures;
 }
+
+
 
