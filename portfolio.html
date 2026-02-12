@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | MAK Team</title>
-    <meta name="description" content="معرض أعمال فريق ميكرز - قسم هندسة تقنيات الأمن السيبراني">
+    <meta name="description" content="ظ…ط¹ط±ط¶ ط£ط¹ظ…ط§ظ„ ظپط±ظٹظ‚ ظ…ظٹظƒط±ط² - ظ‚ط³ظ… ظ‡ظ†ط¯ط³ط© طھظ‚ظ†ظٹط§طھ ط§ظ„ط£ظ…ظ† ط§ظ„ط³ظٹط¨ط±ط§ظ†ظٹ">
 
     <!-- Open Graph -->
     <meta property="og:title" content="MAK Team Portfolio">
-    <meta property="og:description" content="معرض أعمال فريق ميكرز - قسم هندسة تقنيات الأمن السيبراني">
+    <meta property="og:description" content="ظ…ط¹ط±ط¶ ط£ط¹ظ…ط§ظ„ ظپط±ظٹظ‚ ظ…ظٹظƒط±ط² - ظ‚ط³ظ… ظ‡ظ†ط¯ط³ط© طھظ‚ظ†ظٹط§طھ ط§ظ„ط£ظ…ظ† ط§ظ„ط³ظٹط¨ط±ط§ظ†ظٹ">
     <meta property="og:type" content="website">
 
     <!-- Fonts -->
@@ -427,15 +427,15 @@
             <img src="assets/images/logo.jpg" alt="MAK">
             <span>MAK Team</span>
         </a>
-        <a href="login.html" class="btn-view">تسجيل الدخول</a>
+        <a data-team-login href="login.html" class="btn-view">طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
         <img src="assets/images/logo.jpg" alt="MAK Logo" class="hero-logo">
         <h1 class="hero-title">Makers Team</h1>
-        <p class="hero-subtitle">فريق ميكرز</p>
-        <p class="hero-department">قسم هندسة تقنيات الأمن السيبراني</p>
+        <p class="hero-subtitle">ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²</p>
+        <p class="hero-department">ظ‚ط³ظ… ظ‡ظ†ط¯ط³ط© طھظ‚ظ†ظٹط§طھ ط§ظ„ط£ظ…ظ† ط§ظ„ط³ظٹط¨ط±ط§ظ†ظٹ</p>
 
         <div class="hero-stats" id="heroStats">
             <!-- Populated by JS -->
@@ -448,8 +448,8 @@
 
     <!-- Projects -->
     <section class="section" id="projects">
-        <h2 class="section-title">مشاريعنا المنجزة</h2>
-        <p class="section-subtitle">أعمال الفريق المكتملة والمقيّمة</p>
+        <h2 class="section-title">ظ…ط´ط§ط±ظٹط¹ظ†ط§ ط§ظ„ظ…ظ†ط¬ط²ط©</h2>
+        <p class="section-subtitle">ط£ط¹ظ…ط§ظ„ ط§ظ„ظپط±ظٹظ‚ ط§ظ„ظ…ظƒطھظ…ظ„ط© ظˆط§ظ„ظ…ظ‚ظٹظ‘ظ…ط©</p>
 
         <div class="projects-grid" id="projectsGrid">
             <!-- Populated by JS -->
@@ -458,8 +458,8 @@
 
     <!-- Team -->
     <section class="section" id="team">
-        <h2 class="section-title">فريق العمل</h2>
-        <p class="section-subtitle">الأعضاء المؤسسون لفريق ميكرز</p>
+        <h2 class="section-title">ظپط±ظٹظ‚ ط§ظ„ط¹ظ…ظ„</h2>
+        <p class="section-subtitle">ط§ظ„ط£ط¹ط¶ط§ط، ط§ظ„ظ…ط¤ط³ط³ظˆظ† ظ„ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²</p>
 
         <div class="team-grid" id="teamGrid">
             <!-- Populated by JS -->
@@ -469,12 +469,13 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-brand">MAK Team HQ</div>
-        <p>© 2026 Makers Team - جميع الحقوق محفوظة</p>
-        <p style="margin-top: 0.5rem;">مشغّل بواسطة MAK Platform v3.0</p>
+        <p>آ© 2026 Makers Team - ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚ ظ…ط­ظپظˆط¸ط©</p>
+        <p style="margin-top: 0.5rem;">ظ…ط´ط؛ظ‘ظ„ ط¨ظˆط§ط³ط·ط© MAK Platform v3.0</p>
     </footer>
 
     <!-- Scripts -->
     <script src="js/storage.js"></script>
+  <script src="js/team-access.js"></script>
     <script src="js/algorithm.js"></script>
     <script src="js/members.js"></script>
     <script src="js/projects.js"></script>
@@ -502,23 +503,23 @@
             document.getElementById('heroStats').innerHTML = `
                 <div class="hero-stat">
                     <div class="hero-stat-value">${completed.length}</div>
-                    <div class="hero-stat-label">مشروع مكتمل</div>
+                    <div class="hero-stat-label">ظ…ط´ط±ظˆط¹ ظ…ظƒطھظ…ظ„</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-value">${members.length}</div>
-                    <div class="hero-stat-label">أعضاء الفريق</div>
+                    <div class="hero-stat-label">ط£ط¹ط¶ط§ط، ط§ظ„ظپط±ظٹظ‚</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-value">${avgGrade}%</div>
-                    <div class="hero-stat-label">متوسط التقييم</div>
+                    <div class="hero-stat-label">ظ…طھظˆط³ط· ط§ظ„طھظ‚ظٹظٹظ…</div>
                 </div>
             `;
 
             // Projects Grid
             document.getElementById('projectsGrid').innerHTML = completed.length === 0
-                ? '<p style="text-align:center;color:var(--text-secondary);grid-column:1/-1;">لا توجد مشاريع مكتملة حالياً</p>'
+                ? '<p style="text-align:center;color:var(--text-secondary);grid-column:1/-1;">ظ„ط§ طھظˆط¬ط¯ ظ…ط´ط§ط±ظٹط¹ ظ…ظƒطھظ…ظ„ط© ط­ط§ظ„ظٹط§ظ‹</p>'
                 : completed.map(project => {
-                    const subject = subjects.find(s => s.id === project.subject) || { name: 'عام', icon: 'folder' };
+                    const subject = subjects.find(s => s.id === project.subject) || { name: 'ط¹ط§ظ…', icon: 'folder' };
                     const teamMembers = project.assignedMembers?.map(id => {
                         const m = members.find(mem => mem.id === id);
                         return m ? m.name.charAt(0) : '?';
@@ -534,7 +535,7 @@
                                 <h3 class="project-title">${project.title}</h3>
                             </div>
                             <div class="project-body">
-                                <p class="project-description">${project.description || 'لا يوجد وصف'}</p>
+                                <p class="project-description">${project.description || 'ظ„ط§ ظٹظˆط¬ط¯ ظˆطµظپ'}</p>
                                 <div class="project-meta">
                                     <span class="project-meta-item">
                                         <i data-lucide="calendar"></i>
@@ -551,7 +552,7 @@
                                     ${teamMembers.length > 4 ? `<div class="project-team-member">+${teamMembers.length - 4}</div>` : ''}
                                 </div>
                                 <a href="project.html?id=${project.id}" class="btn-view">
-                                    عرض التفاصيل
+                                    ط¹ط±ط¶ ط§ظ„طھظپط§طµظٹظ„
                                 </a>
                             </div>
                         </div>
@@ -567,9 +568,9 @@
                     <div class="team-card">
                         <div class="team-avatar">${member.name.charAt(0)}</div>
                         <div class="team-name">${member.name}</div>
-                        <div class="team-role">${member.role || 'عضو'}</div>
+                        <div class="team-role">${member.role || 'ط¹ط¶ظˆ'}</div>
                         <div class="team-stats">
-                            <span>${completedCount} مشروع</span>
+                            <span>${completedCount} ظ…ط´ط±ظˆط¹</span>
                         </div>
                     </div>
                 `;
@@ -581,3 +582,4 @@
 </body>
 
 </html>
+

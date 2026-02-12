@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التحليلات | MAK Team HQ</title>
-    <meta name="description" content="تحليلات متقدمة لأداء فريق ميكرز">
+    <title>ط§ظ„طھط­ظ„ظٹظ„ط§طھ | MAK Team HQ</title>
+    <meta name="description" content="طھط­ظ„ظٹظ„ط§طھ ظ…طھظ‚ط¯ظ…ط© ظ„ط£ط¯ط§ط، ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -337,12 +337,12 @@
                     <i data-lucide="arrow-right"></i>
                 </a>
                 <i data-lucide="bar-chart-3"></i>
-                <h1>التحليلات والإحصائيات</h1>
+                <h1>ط§ظ„طھط­ظ„ظٹظ„ط§طھ ظˆط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ</h1>
             </div>
             <div class="date-range-selector">
-                <button class="date-range-btn" data-range="week">هذا الأسبوع</button>
-                <button class="date-range-btn active" data-range="month">هذا الشهر</button>
-                <button class="date-range-btn" data-range="all">الكل</button>
+                <button class="date-range-btn" data-range="week">ظ‡ط°ط§ ط§ظ„ط£ط³ط¨ظˆط¹</button>
+                <button class="date-range-btn active" data-range="month">ظ‡ط°ط§ ط§ظ„ط´ظ‡ط±</button>
+                <button class="date-range-btn" data-range="all">ط§ظ„ظƒظ„</button>
             </div>
         </div>
 
@@ -355,7 +355,7 @@
         <div class="ai-insights-panel" id="aiInsights">
             <div class="ai-insights-header">
                 <i data-lucide="sparkles"></i>
-                <h3>رؤى الذكاء الاصطناعي</h3>
+                <h3>ط±ط¤ظ‰ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ</h3>
                 <span class="ai-badge">AI</span>
             </div>
             <div class="insights-list" id="insightsList">
@@ -363,7 +363,7 @@
                     <div class="ai-loading-dots">
                         <span></span><span></span><span></span>
                     </div>
-                    <span>جاري التحليل...</span>
+                    <span>ط¬ط§ط±ظٹ ط§ظ„طھط­ظ„ظٹظ„...</span>
                 </div>
             </div>
         </div>
@@ -374,7 +374,7 @@
                 <div class="chart-header">
                     <span class="chart-title">
                         <i data-lucide="trending-up"></i>
-                        تقدم المشاريع
+                        طھظ‚ط¯ظ… ط§ظ„ظ…ط´ط§ط±ظٹط¹
                     </span>
                 </div>
                 <div class="chart-container">
@@ -386,7 +386,7 @@
                 <div class="chart-header">
                     <span class="chart-title">
                         <i data-lucide="trophy"></i>
-                        أفضل الأعضاء
+                        ط£ظپط¶ظ„ ط§ظ„ط£ط¹ط¶ط§ط،
                     </span>
                 </div>
                 <ul class="leaderboard" id="leaderboard">
@@ -400,7 +400,7 @@
                 <div class="chart-header">
                     <span class="chart-title">
                         <i data-lucide="pie-chart"></i>
-                        توزيع المشاريع حسب المادة
+                        طھظˆط²ظٹط¹ ط§ظ„ظ…ط´ط§ط±ظٹط¹ ط­ط³ط¨ ط§ظ„ظ…ط§ط¯ط©
                     </span>
                 </div>
                 <div class="chart-container">
@@ -412,7 +412,7 @@
                 <div class="chart-header">
                     <span class="chart-title">
                         <i data-lucide="activity"></i>
-                        نشاط الفريق
+                        ظ†ط´ط§ط· ط§ظ„ظپط±ظٹظ‚
                     </span>
                 </div>
                 <div class="chart-container">
@@ -436,8 +436,8 @@
 
     <script>
         // Protect page
-        if (!Auth.isLoggedIn()) {
-            window.location.href = 'login.html';
+        if (!Auth.protectPage(Auth.PERMISSIONS.ANALYTICS_VIEW)) {
+            throw new Error('Unauthorized access');
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -463,23 +463,23 @@
                 <div class="stat-card">
                     <div class="stat-icon blue"><i data-lucide="folder"></i></div>
                     <div class="stat-value">${projects.length}</div>
-                    <div class="stat-label">إجمالي المشاريع</div>
+                    <div class="stat-label">ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظ…ط´ط§ط±ظٹط¹</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon green"><i data-lucide="check-circle"></i></div>
                     <div class="stat-value">${completed}</div>
-                    <div class="stat-label">مشاريع مكتملة</div>
+                    <div class="stat-label">ظ…ط´ط§ط±ظٹط¹ ظ…ظƒطھظ…ظ„ط©</div>
                     <div class="stat-change positive"><i data-lucide="trending-up"></i> ${Math.round(completed / projects.length * 100) || 0}%</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon orange"><i data-lucide="clock"></i></div>
                     <div class="stat-value">${inProgress}</div>
-                    <div class="stat-label">قيد العمل</div>
+                    <div class="stat-label">ظ‚ظٹط¯ ط§ظ„ط¹ظ…ظ„</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon purple"><i data-lucide="star"></i></div>
                     <div class="stat-value">${avgGrade}</div>
-                    <div class="stat-label">متوسط الدرجات</div>
+                    <div class="stat-label">ظ…طھظˆط³ط· ط§ظ„ط¯ط±ط¬ط§طھ</div>
                 </div>
             `;
 
@@ -495,7 +495,7 @@
                 <li class="leaderboard-item">
                     <div class="leaderboard-rank ${i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : 'default'}">${i + 1}</div>
                     <span class="leaderboard-name">${m.name}</span>
-                    <span class="leaderboard-score">${m.score} مشروع</span>
+                    <span class="leaderboard-score">${m.score} ظ…ط´ط±ظˆط¹</span>
                 </li>
             `).join('');
 
@@ -519,7 +519,7 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['جديد', 'قيد العمل', 'مراجعة', 'مكتمل'],
+                    labels: ['ط¬ط¯ظٹط¯', 'ظ‚ظٹط¯ ط§ظ„ط¹ظ…ظ„', 'ظ…ط±ط§ط¬ط¹ط©', 'ظ…ظƒطھظ…ظ„'],
                     datasets: [{
                         data: Object.values(statusCounts),
                         backgroundColor: ['#3b82f6', '#fb923c', '#8b5cf6', '#22c55e'],
@@ -581,7 +581,7 @@
                 data: {
                     labels: last7Days,
                     datasets: [{
-                        label: 'النشاط',
+                        label: 'ط§ظ„ظ†ط´ط§ط·',
                         data: [2, 5, 3, 8, 4, 6, 7],
                         borderColor: '#8b5cf6',
                         backgroundColor: 'rgba(139, 92, 246, 0.1)',
@@ -634,8 +634,8 @@
                         <div class="insight-item">
                             <div class="insight-icon tip"><i data-lucide="check"></i></div>
                             <div>
-                                <strong>أداء ممتاز!</strong>
-                                <p style="margin: 0.25rem 0 0; color: var(--text-secondary);">لا توجد ملاحظات حالياً. استمروا بالعمل الجيد!</p>
+                                <strong>ط£ط¯ط§ط، ظ…ظ…طھط§ط²!</strong>
+                                <p style="margin: 0.25rem 0 0; color: var(--text-secondary);">ظ„ط§ طھظˆط¬ط¯ ظ…ظ„ط§ط­ط¸ط§طھ ط­ط§ظ„ظٹط§ظ‹. ط§ط³طھظ…ط±ظˆط§ ط¨ط§ظ„ط¹ظ…ظ„ ط§ظ„ط¬ظٹط¯!</p>
                             </div>
                         </div>
                     `;
@@ -646,7 +646,7 @@
             } catch (error) {
                 console.error('AI insights error:', error);
                 document.getElementById('insightsList').innerHTML = `
-                    <p style="color: var(--text-muted);">تعذر تحميل التحليلات الذكية</p>
+                    <p style="color: var(--text-muted);">طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„طھط­ظ„ظٹظ„ط§طھ ط§ظ„ط°ظƒظٹط©</p>
                 `;
             }
         }

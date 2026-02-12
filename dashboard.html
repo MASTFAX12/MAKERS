@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>لوحة التحكم | MAK Team HQ</title>
-    <meta name="description" content="لوحة تحكم فريق ميكرز">
+    <title>ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ… | MAK Team HQ</title>
+    <meta name="description" content="ظ„ظˆط­ط© طھط­ظƒظ… ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²">
     <meta name="theme-color" content="#0a0a0f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -58,19 +58,19 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="team.html">الفريق</a></li>
-                <li><a href="projects.html">المشاريع</a></li>
+                <li><a href="index.html">ط§ظ„ط±ط¦ظٹط³ظٹط©</a></li>
+                <li><a href="team.html">ط§ظ„ظپط±ظٹظ‚</a></li>
+                <li><a href="projects.html">ط§ظ„ظ…ط´ط§ط±ظٹط¹</a></li>
                 <li>
                     <div class="notification-bell" onclick="toggleNotifications()">
-                        🔔
+                        ًں””
                         <div class="notification-dropdown" id="notificationDropdown">
-                            <div class="notification-header">الإشعارات</div>
+                            <div class="notification-header">ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ</div>
                             <div class="notification-list" id="notificationList"></div>
                         </div>
                     </div>
                 </li>
-                <li><a href="#" onclick="Auth.logout()" class="btn btn-secondary">تسجيل خروج</a></li>
+                <li><a href="#" onclick="Auth.logout()" class="btn btn-secondary">طھط³ط¬ظٹظ„ ط®ط±ظˆط¬</a></li>
             </ul>
 
             <div class="menu-toggle" onclick="toggleMobileMenu()">
@@ -83,7 +83,7 @@
 
     <!-- Mobile Sidebar Toggle -->
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
-        ☰
+        âک°
     </button>
 
     <!-- Dashboard Container -->
@@ -92,7 +92,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="assets/images/logo.jpg" alt="MAK" class="sidebar-logo">
-                <div class="sidebar-title">لوحة التحكم</div>
+                <div class="sidebar-title">ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ…</div>
             </div>
 
             <!-- Level Badge in Sidebar -->
@@ -102,49 +102,49 @@
                 <li>
                     <a href="#" class="active" data-section="overview" onclick="showSection('overview')">
                         <span class="menu-icon"><i data-lucide="layout-dashboard"></i></span>
-                        نظرة عامة
+                        ظ†ط¸ط±ط© ط¹ط§ظ…ط©
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="projects" onclick="showSection('projects')">
+                    <a href="#" data-section="projects" data-requires-permission="projects_view" onclick="showSection('projects')">
                         <span class="menu-icon"><i data-lucide="folder-kanban"></i></span>
-                        المشاريع
+                        ط§ظ„ظ…ط´ط§ط±ظٹط¹
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="add-project" onclick="showSection('add-project')">
+                    <a href="#" data-section="add-project" data-requires-permission="projects_create" onclick="showSection('add-project')">
                         <span class="menu-icon"><i data-lucide="folder-plus"></i></span>
-                        مشروع جديد
+                        ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="calendar" onclick="showSection('calendar')">
+                    <a href="#" data-section="calendar" data-requires-permission="projects_view" onclick="showSection('calendar')">
                         <span class="menu-icon"><i data-lucide="calendar-days"></i></span>
-                        التقويم
+                        ط§ظ„طھظ‚ظˆظٹظ…
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="members" onclick="showSection('members')">
+                    <a href="#" data-section="members" data-requires-permission="members_view" onclick="showSection('members')">
                         <span class="menu-icon"><i data-lucide="users"></i></span>
-                        الأعضاء
+                        ط§ظ„ط£ط¹ط¶ط§ط،
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="achievements" onclick="showSection('achievements')">
+                    <a href="#" data-section="achievements" data-requires-permission="projects_view" onclick="showSection('achievements')">
                         <span class="menu-icon"><i data-lucide="trophy"></i></span>
-                        الإنجازات
+                        ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="activity" onclick="showSection('activity')">
+                    <a href="#" data-section="activity" data-requires-permission="activity_view" onclick="showSection('activity')">
                         <span class="menu-icon"><i data-lucide="activity"></i></span>
-                        سجل النشاطات
+                        ط³ط¬ظ„ ط§ظ„ظ†ط´ط§ط·ط§طھ
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-section="settings" onclick="showSection('settings')">
+                    <a href="#" data-section="settings" data-requires-permission="settings_view" onclick="showSection('settings')">
                         <span class="menu-icon"><i data-lucide="settings"></i></span>
-                        الإعدادات
+                        ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ
                     </a>
                 </li>
             </ul>
@@ -162,11 +162,11 @@
             <section id="section-overview" class="dashboard-section">
                 <div class="dashboard-header">
                     <div class="dashboard-welcome">
-                        <h1 id="greetingText">مرحباً، مصطفى</h1>
+                        <h1 id="greetingText">ظ…ط±ط­ط¨ط§ظ‹طŒ ظ…طµط·ظپظ‰</h1>
                         <p class="dashboard-date" id="currentDate"></p>
                     </div>
-                    <button class="btn btn-primary btn-shine" onclick="showSection('add-project')">
-                        ➕ مشروع جديد
+                    <button class="btn btn-primary btn-shine" data-requires-permission="projects_create" onclick="showSection('add-project')">
+                        â‍• ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
                     </button>
                 </div>
 
@@ -178,7 +178,7 @@
                     <!-- Contribution Panel -->
                     <div class="panel">
                         <div class="panel-header">
-                            <h3 class="panel-title">📈 مساهمات الأعضاء</h3>
+                            <h3 class="panel-title">ًں“ˆ ظ…ط³ط§ظ‡ظ…ط§طھ ط§ظ„ط£ط¹ط¶ط§ط،</h3>
                         </div>
                         <div class="panel-body">
                             <ul class="contribution-list" id="dashContribution"></ul>
@@ -188,7 +188,7 @@
                     <!-- Deadlines Panel -->
                     <div class="panel">
                         <div class="panel-header">
-                            <h3 class="panel-title">📅 المواعيد القادمة</h3>
+                            <h3 class="panel-title">ًں“… ط§ظ„ظ…ظˆط§ط¹ظٹط¯ ط§ظ„ظ‚ط§ط¯ظ…ط©</h3>
                         </div>
                         <div class="panel-body">
                             <ul class="deadline-list" id="dashDeadlines"></ul>
@@ -199,7 +199,7 @@
                 <!-- Subject Stats -->
                 <div class="panel mt-4">
                     <div class="panel-header">
-                        <h3 class="panel-title">📚 المشاريع حسب المادة</h3>
+                        <h3 class="panel-title">ًں“ڑ ط§ظ„ظ…ط´ط§ط±ظٹط¹ ط­ط³ط¨ ط§ظ„ظ…ط§ط¯ط©</h3>
                     </div>
                     <div class="panel-body">
                         <ul class="subject-stats" id="dashSubjects"></ul>
@@ -209,25 +209,25 @@
                 <!-- Quick Actions Cards -->
                 <div class="quick-cards"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                    <div class="card card-3d" onclick="showSection('add-project')"
+                    <div class="card card-3d" data-requires-permission="projects_create" onclick="showSection('add-project')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">➕</div>
-                        <div style="font-weight: 600;">إضافة مشروع</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">â‍•</div>
+                        <div style="font-weight: 600;">ط¥ط¶ط§ظپط© ظ…ط´ط±ظˆط¹</div>
                     </div>
                     <div class="card card-3d" onclick="showSection('calendar')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📅</div>
-                        <div style="font-weight: 600;">التقويم</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًں“…</div>
+                        <div style="font-weight: 600;">ط§ظ„طھظ‚ظˆظٹظ…</div>
                     </div>
                     <div class="card card-3d" onclick="showSection('achievements')"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏆</div>
-                        <div style="font-weight: 600;">الإنجازات</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًںڈ†</div>
+                        <div style="font-weight: 600;">ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ</div>
                     </div>
                     <div class="card card-3d" onclick="App.exportData()"
                         style="cursor: pointer; text-align: center; padding: 1.5rem;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📤</div>
-                        <div style="font-weight: 600;">تصدير</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">ًں“¤</div>
+                        <div style="font-weight: 600;">طھطµط¯ظٹط±</div>
                     </div>
                 </div>
             </section>
@@ -235,26 +235,26 @@
             <!-- Projects Section -->
             <section id="section-projects" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>📋 إدارة المشاريع</h1>
-                    <button class="btn btn-primary btn-shine" onclick="showSection('add-project')">
-                        ➕ مشروع جديد
+                    <h1>ًں“‹ ط¥ط¯ط§ط±ط© ط§ظ„ظ…ط´ط§ط±ظٹط¹</h1>
+                    <button class="btn btn-primary btn-shine" data-requires-permission="projects_create" onclick="showSection('add-project')">
+                        â‍• ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯
                     </button>
                 </div>
 
                 <div class="filter-bar">
                     <div class="filter-group">
-                        <span class="filter-label">الحالة:</span>
+                        <span class="filter-label">ط§ظ„ط­ط§ظ„ط©:</span>
                         <select class="filter-select" id="dashFilterStatus" onchange="loadProjects()">
-                            <option value="">الكل</option>
-                            <option value="new">جديد</option>
-                            <option value="in_progress">جاري</option>
-                            <option value="completed">مكتمل</option>
+                            <option value="">ط§ظ„ظƒظ„</option>
+                            <option value="new">ط¬ط¯ظٹط¯</option>
+                            <option value="in_progress">ط¬ط§ط±ظٹ</option>
+                            <option value="completed">ظ…ظƒطھظ…ظ„</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <span class="filter-label">المادة:</span>
+                        <span class="filter-label">ط§ظ„ظ…ط§ط¯ط©:</span>
                         <select class="filter-select" id="dashFilterSubject" onchange="loadProjects()">
-                            <option value="">الكل</option>
+                            <option value="">ط§ظ„ظƒظ„</option>
                         </select>
                     </div>
                 </div>
@@ -265,36 +265,36 @@
             <!-- Add Project Section -->
             <section id="section-add-project" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>➕ إضافة مشروع جديد</h1>
+                    <h1>â‍• ط¥ط¶ط§ظپط© ظ…ط´ط±ظˆط¹ ط¬ط¯ظٹط¯</h1>
                 </div>
 
                 <div class="card cyber-border" style="max-width: 700px;">
                     <form id="newProjectForm">
                         <!-- Project Title -->
                         <div class="form-group">
-                            <label class="form-label">📝 عنوان المشروع *</label>
+                            <label class="form-label">ًں“‌ ط¹ظ†ظˆط§ظ† ط§ظ„ظ…ط´ط±ظˆط¹ *</label>
                             <input type="text" class="form-input" id="projectTitle" required
-                                placeholder="مثال: مشروع إدارة الملفات">
+                                placeholder="ظ…ط«ط§ظ„: ظ…ط´ط±ظˆط¹ ط¥ط¯ط§ط±ط© ط§ظ„ظ…ظ„ظپط§طھ">
                         </div>
 
                         <!-- Description -->
                         <div class="form-group">
-                            <label class="form-label">📋 الوصف</label>
+                            <label class="form-label">ًں“‹ ط§ظ„ظˆطµظپ</label>
                             <textarea class="form-textarea" id="projectDescription"
-                                placeholder="وصف مختصر للمشروع..."></textarea>
+                                placeholder="ظˆطµظپ ظ…ط®طھطµط± ظ„ظ„ظ…ط´ط±ظˆط¹..."></textarea>
                         </div>
 
                         <!-- Subject -->
                         <div class="form-group">
-                            <label class="form-label">📚 المادة *</label>
+                            <label class="form-label">ًں“ڑ ط§ظ„ظ…ط§ط¯ط© *</label>
                             <select class="form-select" id="projectSubject" required onchange="updateMemberSelection()">
-                                <option value="">اختر المادة</option>
+                                <option value="">ط§ط®طھط± ط§ظ„ظ…ط§ط¯ط©</option>
                             </select>
                         </div>
 
                         <!-- Team Size -->
                         <div class="form-group">
-                            <label class="form-label">👥 عدد الأعضاء المطلوب *</label>
+                            <label class="form-label">ًں‘¥ ط¹ط¯ط¯ ط§ظ„ط£ط¹ط¶ط§ط، ط§ظ„ظ…ط·ظ„ظˆط¨ *</label>
                             <div class="team-size-selector">
                                 <div class="team-size-option">
                                     <input type="radio" name="teamSize" value="1" id="size1"
@@ -331,36 +331,36 @@
 
                         <!-- Deadline -->
                         <div class="form-group">
-                            <label class="form-label">⏰ الموعد النهائي *</label>
+                            <label class="form-label">âڈ° ط§ظ„ظ…ظˆط¹ط¯ ط§ظ„ظ†ظ‡ط§ط¦ظٹ *</label>
                             <input type="date" class="form-input" id="projectDeadline" required>
                         </div>
 
                         <!-- Priority -->
                         <div class="form-group">
-                            <label class="form-label">⚡ الأهمية</label>
+                            <label class="form-label">âڑ، ط§ظ„ط£ظ‡ظ…ظٹط©</label>
                             <div class="priority-selector">
                                 <div class="priority-option low">
                                     <input type="radio" name="priority" value="low" id="priorityLow">
-                                    <label for="priorityLow">عادي</label>
+                                    <label for="priorityLow">ط¹ط§ط¯ظٹ</label>
                                 </div>
                                 <div class="priority-option normal">
                                     <input type="radio" name="priority" value="normal" id="priorityNormal" checked>
-                                    <label for="priorityNormal">متوسط</label>
+                                    <label for="priorityNormal">ظ…طھظˆط³ط·</label>
                                 </div>
                                 <div class="priority-option high">
                                     <input type="radio" name="priority" value="high" id="priorityHigh">
-                                    <label for="priorityHigh">مهم</label>
+                                    <label for="priorityHigh">ظ…ظ‡ظ…</label>
                                 </div>
                                 <div class="priority-option urgent">
                                     <input type="radio" name="priority" value="urgent" id="priorityUrgent">
-                                    <label for="priorityUrgent">عاجل</label>
+                                    <label for="priorityUrgent">ط¹ط§ط¬ظ„</label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Team Selection -->
                         <div class="form-group">
-                            <label class="form-label">🧠 اختر الفريق (الخوارزمية تقترح الأفضل ⭐)</label>
+                            <label class="form-label">ًں§  ط§ط®طھط± ط§ظ„ظپط±ظٹظ‚ (ط§ظ„ط®ظˆط§ط±ط²ظ…ظٹط© طھظ‚طھط±ط­ ط§ظ„ط£ظپط¶ظ„ â­گ)</label>
                             <div class="member-selection" id="memberSelection">
                                 <!-- Will be populated by JavaScript -->
                             </div>
@@ -369,7 +369,7 @@
                         <!-- Submit -->
                         <div class="form-group" style="margin-top: 2rem;">
                             <button type="submit" class="btn btn-primary btn-shine" style="width: 100%;">
-                                🚀 إنشاء المشروع
+                                ًںڑ€ ط¥ظ†ط´ط§ط، ط§ظ„ظ…ط´ط±ظˆط¹
                             </button>
                         </div>
                     </form>
@@ -379,8 +379,8 @@
             <!-- Calendar Section -->
             <section id="section-calendar" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>📅 التقويم</h1>
-                    <button class="btn btn-secondary" onclick="Calendar.goToToday()">اليوم</button>
+                    <h1>ًں“… ط§ظ„طھظ‚ظˆظٹظ…</h1>
+                    <button class="btn btn-secondary" onclick="Calendar.goToToday()">ط§ظ„ظٹظˆظ…</button>
                 </div>
 
                 <div id="calendarContainer" style="max-width: 800px;"></div>
@@ -389,7 +389,7 @@
             <!-- Members Section -->
             <section id="section-members" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>👥 إدارة الأعضاء</h1>
+                    <h1>ًں‘¥ ط¥ط¯ط§ط±ط© ط§ظ„ط£ط¹ط¶ط§ط،</h1>
                 </div>
 
                 <div class="members-grid" id="dashMembers"></div>
@@ -398,22 +398,22 @@
             <!-- Achievements Section -->
             <section id="section-achievements" class="dashboard-section hidden">
                 <div class="dashboard-header">
-                    <h1>🏆 الإنجازات والمستويات</h1>
+                    <h1>ًںڈ† ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ ظˆط§ظ„ظ…ط³طھظˆظٹط§طھ</h1>
                 </div>
 
                 <!-- Level Card -->
                 <div class="card cyber-border" style="max-width: 400px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">📊 مستوى الفريق</h3>
+                    <h3 style="margin-bottom: 1rem;">ًں“ٹ ظ…ط³طھظˆظ‰ ط§ظ„ظپط±ظٹظ‚</h3>
                     <div id="achievementLevel"></div>
                 </div>
 
                 <!-- Achievements Grid -->
                 <div class="card" style="max-width: 800px;">
-                    <h3 style="margin-bottom: 1.5rem;">🎖️ الأوسمة</h3>
+                    <h3 style="margin-bottom: 1.5rem;">ًںژ–ï¸ڈ ط§ظ„ط£ظˆط³ظ…ط©</h3>
                     <div class="badge-container" id="achievementsBadges" style="justify-content: center;"></div>
 
                     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                        <h4 style="margin-bottom: 1rem;">📋 قائمة الإنجازات</h4>
+                        <h4 style="margin-bottom: 1rem;">ًں“‹ ظ‚ط§ط¦ظ…ط© ط§ظ„ط¥ظ†ط¬ط§ط²ط§طھ</h4>
                         <div id="achievementsList"></div>
                     </div>
                 </div>
@@ -424,7 +424,7 @@
                 <div class="dashboard-header">
                     <h1 class="section-header-icon">
                         <i data-lucide="activity"></i>
-                        سجل النشاطات
+                        ط³ط¬ظ„ ط§ظ„ظ†ط´ط§ط·ط§طھ
                     </h1>
                 </div>
 
@@ -440,68 +440,105 @@
                 <div class="dashboard-header">
                     <h1 class="section-header-icon">
                         <i data-lucide="settings"></i>
-                        الإعدادات
+                        ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ
                     </h1>
                 </div>
 
                 <!-- User Profile Card -->
                 <div class="card" style="max-width: 600px; margin-bottom: 1.5rem;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="user"></i> حسابي</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="user"></i> ط­ط³ط§ط¨ظٹ</h3>
                     <div class="user-badge" id="currentUserBadge">
                         <!-- Will be populated by JavaScript -->
                     </div>
                 </div>
 
-                <div class="card" style="max-width: 600px; margin-bottom: 1.5rem;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="key"></i> تغيير الرمز الشخصي (PIN)</h3>
-                    <form id="pinChangeForm">
-                        <div class="form-group">
-                            <label class="form-label">الرمز الحالي</label>
-                            <input type="password" class="form-input" id="oldPin" required maxlength="4"
-                                placeholder="****">
+                                <div class="card" id="leaderAccessCard" style="max-width: 800px; margin-bottom: 1.5rem; display: none;">
+                    <h3 class="mb-3 icon-text"><i data-lucide="crown"></i> إدارة دخول الفريق (القائد فقط)</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">رابط القائد الحالي</label>
+                        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                            <input type="text" class="form-input" id="leaderLinkOutput" readonly style="direction: ltr;">
+                            <button type="button" class="btn btn-secondary" id="copyLeaderLinkBtn">نسخ</button>
+                            <button type="button" class="btn btn-secondary" id="rotateLeaderLinkBtn">تدوير الرابط</button>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">الرمز الجديد (4 أرقام)</label>
-                            <input type="password" class="form-input" id="newPin" required maxlength="4"
-                                placeholder="****">
+                        <small style="color: var(--text-muted); display: block; margin-top: 0.6rem;">
+                            تدوير رابط القائد يلغي الرابط السابق مباشرة.
+                        </small>
+                    </div>
+
+                    <hr style="border-color: var(--border-color); margin: 1rem 0;">
+
+                    <form id="inviteCreateForm">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">اسم العضو</label>
+                                <input type="text" class="form-input" id="inviteName" placeholder="مثال: أحمد" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">الدور</label>
+                                <input type="text" class="form-input" id="inviteRole" placeholder="عضو" value="عضو">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">الحرف/الأفاتار</label>
+                                <input type="text" class="form-input" id="inviteAvatar" placeholder="أ" maxlength="2">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">مدة الرابط (بالساعات)</label>
+                                <input type="number" class="form-input" id="inviteExpiryHours" min="1" max="720" value="24" required>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="form-label">تأكيد الرمز الجديد</label>
-                            <input type="password" class="form-input" id="confirmPin" required maxlength="4"
-                                placeholder="****">
+                            <label class="form-label">الصلاحيات</label>
+                            <div id="invitePermissionsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.6rem;"></div>
                         </div>
+
                         <button type="submit" class="btn btn-primary icon-text">
-                            <i data-lucide="save"></i>
-                            حفظ الرمز الجديد
+                            <i data-lucide="link-2"></i>
+                            إنشاء رابط دعوة
                         </button>
                     </form>
+
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label class="form-label">الرابط الناتج</label>
+                        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                            <input type="text" class="form-input" id="inviteLinkOutput" readonly style="direction: ltr;">
+                            <button type="button" class="btn btn-secondary" id="copyInviteLinkBtn">نسخ</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label class="form-label">الروابط النشطة</label>
+                        <div id="inviteListContainer" style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 280px; overflow-y: auto;"></div>
+                    </div>
                 </div>
 
                 <div class="card" style="max-width: 600px; margin-bottom: 1.5rem;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="volume-2"></i> الصوت</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="volume-2"></i> ط§ظ„طµظˆطھ</h3>
                     <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
                         <input type="checkbox" id="soundToggle" checked onchange="Effects.toggleSound()">
-                        <span>تفعيل المؤثرات الصوتية</span>
+                        <span>طھظپط¹ظٹظ„ ط§ظ„ظ…ط¤ط«ط±ط§طھ ط§ظ„طµظˆطھظٹط©</span>
                     </label>
                 </div>
 
                 <div class="card" style="max-width: 600px;">
-                    <h3 class="mb-3 icon-text"><i data-lucide="database"></i> البيانات</h3>
+                    <h3 class="mb-3 icon-text"><i data-lucide="database"></i> ط§ظ„ط¨ظٹط§ظ†ط§طھ</h3>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                         <button class="btn btn-secondary icon-text" onclick="App.exportData()">
                             <i data-lucide="download"></i>
-                            تصدير البيانات
+                            طھطµط¯ظٹط± ط§ظ„ط¨ظٹط§ظ†ط§طھ
                         </button>
                         <label class="btn btn-secondary icon-text" style="cursor: pointer;">
                             <i data-lucide="upload"></i>
-                            استيراد البيانات
+                            ط§ط³طھظٹط±ط§ط¯ ط§ظ„ط¨ظٹط§ظ†ط§طھ
                             <input type="file" accept=".json" onchange="App.importData(this.files[0])"
                                 style="display: none;">
                         </label>
                         <button class="btn btn-secondary icon-text"
                             style="border-color: var(--danger); color: var(--danger);" onclick="App.resetData()">
                             <i data-lucide="trash-2"></i>
-                            إعادة تعيين
+                            ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†
                         </button>
                     </div>
                 </div>
@@ -533,75 +570,100 @@
 
 
 
-    <script>
-        // Protect page
-        if (!Auth.isLoggedIn()) {
-            window.location.href = 'login.html';
+        <script>
+        if (!Auth.protectPage()) {
+            throw new Error('Unauthorized access');
         }
 
-        // Initialize platform on load
+        const sectionPermissions = {
+            projects: Auth.PERMISSIONS.PROJECTS_VIEW,
+            'add-project': Auth.PERMISSIONS.PROJECTS_CREATE,
+            calendar: Auth.PERMISSIONS.PROJECTS_VIEW,
+            members: Auth.PERMISSIONS.MEMBERS_VIEW,
+            achievements: Auth.PERMISSIONS.PROJECTS_VIEW,
+            activity: Auth.PERMISSIONS.ACTIVITY_VIEW,
+            settings: Auth.PERMISSIONS.SETTINGS_VIEW
+        };
+
         (async function initPlatform() {
             try {
-                // Initialize Firebase
                 await Firebase.init();
                 await FirebaseDB.init();
-
-                // Initialize notifications
                 await Notifications.init();
-
-                // Initialize AI features
                 AIFeatures.init();
-
-                console.log('🚀 MAK Platform v3.0 initialized');
+                console.log('MAK Platform v3.0 initialized');
             } catch (error) {
                 console.error('Platform init error:', error);
             }
         })();
 
-        // Toggle mobile menu
         function toggleMobileMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
             document.querySelector('.menu-toggle').classList.toggle('active');
         }
 
-        // Toggle sidebar on mobile
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
         }
 
-        // Toggle notifications
         function toggleNotifications() {
             const dropdown = document.getElementById('notificationDropdown');
             dropdown.classList.toggle('active');
 
-            // Render notification panel
             if (dropdown.classList.contains('active')) {
                 dropdown.innerHTML = Notifications.renderPanel();
                 lucide.createIcons();
             }
         }
 
-        // Show section
+        function getAllowedDefaultSection() {
+            const order = ['overview', 'projects', 'add-project', 'calendar', 'members', 'achievements', 'activity', 'settings'];
+            return order.find(section => {
+                const needed = sectionPermissions[section];
+                return !needed || Auth.can(needed);
+            }) || 'overview';
+        }
+
+        function applyPermissionVisibility() {
+            document.querySelectorAll('[data-requires-permission]').forEach(el => {
+                const permission = el.dataset.requiresPermission;
+                const allowed = !permission || Auth.can(permission);
+
+                const li = el.closest('li');
+                if (li && li.parentElement?.classList.contains('sidebar-menu')) {
+                    li.style.display = allowed ? '' : 'none';
+                } else {
+                    el.style.display = allowed ? '' : 'none';
+                }
+            });
+
+            const leaderCard = document.getElementById('leaderAccessCard');
+            if (leaderCard) {
+                leaderCard.style.display = Auth.isLeader() ? '' : 'none';
+            }
+        }
+
         function showSection(sectionId) {
-            // Hide all sections
+            const required = sectionPermissions[sectionId];
+            if (required && !Auth.can(required)) {
+                App.showToast('لا تملك صلاحية الوصول لهذا القسم', 'error');
+                sectionId = getAllowedDefaultSection();
+            }
+
             document.querySelectorAll('.dashboard-section').forEach(s => s.classList.add('hidden'));
 
-            // Show selected section
             const section = document.getElementById('section-' + sectionId);
             if (section) section.classList.remove('hidden');
 
-            // Update sidebar active state
             document.querySelectorAll('.sidebar-menu a').forEach(a => {
                 a.classList.remove('active');
                 if (a.dataset.section === sectionId) a.classList.add('active');
             });
 
-            // Close sidebar on mobile
             if (window.innerWidth < 992) {
                 document.getElementById('sidebar').classList.remove('active');
             }
 
-            // Refresh section data
             if (sectionId === 'overview') loadOverview();
             if (sectionId === 'projects') loadProjects();
             if (sectionId === 'add-project') loadAddProjectForm();
@@ -609,17 +671,15 @@
             if (sectionId === 'members') loadMembers();
             if (sectionId === 'achievements') loadAchievements();
             if (sectionId === 'activity') loadActivityLog();
+            if (sectionId === 'settings') loadInviteManagement();
 
-            // Re-render icons
             setTimeout(() => lucide.createIcons(), 50);
         }
 
-        // Load activity log
         function loadActivityLog() {
             ActivityLog.render(document.getElementById('activityLogContainer'), { count: 50 });
         }
 
-        // Load overview
         function loadOverview() {
             Charts.renderStatsOverview(document.getElementById('statsContainer'));
             Members.renderContributionChart(document.getElementById('dashContribution'));
@@ -627,7 +687,6 @@
             Projects.renderSubjectStats(document.getElementById('dashSubjects'));
         }
 
-        // Load projects
         function loadProjects() {
             const status = document.getElementById('dashFilterStatus').value;
             const subject = document.getElementById('dashFilterSubject').value;
@@ -636,22 +695,24 @@
             if (status) filter.status = status;
             if (subject) filter.subject = subject;
 
-            Projects.renderAll(document.getElementById('dashProjects'), Object.keys(filter).length ? filter : null, true);
+            const canManage = Auth.can(Auth.PERMISSIONS.PROJECTS_MANAGE);
+            Projects.renderAll(document.getElementById('dashProjects'), Object.keys(filter).length ? filter : null, canManage);
         }
 
-        // Load add project form
         function loadAddProjectForm() {
+            if (!Auth.can(Auth.PERMISSIONS.PROJECTS_CREATE)) {
+                return;
+            }
+
             const settings = App.getSettings();
             const subjectSelect = document.getElementById('projectSubject');
 
-            // Populate subjects if empty
             if (subjectSelect.options.length <= 1) {
                 settings.subjects.forEach(s => {
                     subjectSelect.innerHTML += `<option value="${s.id}">${s.icon} ${s.name}</option>`;
                 });
             }
 
-            // Also populate filter
             const filterSubject = document.getElementById('dashFilterSubject');
             if (filterSubject.options.length <= 1) {
                 settings.subjects.forEach(s => {
@@ -659,23 +720,22 @@
                 });
             }
 
-            // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('projectDeadline').min = today;
 
             updateMemberSelection();
         }
 
-        // Update member selection based on team size and subject
         function updateMemberSelection() {
+            if (!Auth.can(Auth.PERMISSIONS.PROJECTS_CREATE)) return;
+
             const teamSize = parseInt(document.querySelector('input[name="teamSize"]:checked')?.value || 3);
             const subject = document.getElementById('projectSubject').value || 'programming';
-
             const suggestedMembers = Algorithm.getSuggestedTeam(subject, teamSize);
             const container = document.getElementById('memberSelection');
 
-            container.innerHTML = suggestedMembers.map((member, index) => `
-        <div class="member-select-item ${member.suggested ? 'selected suggested' : ''}" 
+            container.innerHTML = suggestedMembers.map(member => `
+        <div class="member-select-item ${member.suggested ? 'selected suggested' : ''}"
              data-id="${member.id}" onclick="toggleMember(this)">
           <div class="member-select-checkbox"></div>
           <div class="member-select-avatar">${member.avatar}</div>
@@ -687,13 +747,12 @@
       `).join('');
         }
 
-        // Toggle member selection
         function toggleMember(element) {
+            if (!Auth.can(Auth.PERMISSIONS.PROJECTS_CREATE)) return;
             element.classList.toggle('selected');
             Effects.playClick();
         }
 
-        // Load members
         function loadMembers() {
             const container = document.getElementById('dashMembers');
             const members = Members.getAll();
@@ -724,15 +783,13 @@
       `).join('');
         }
 
-        // Load achievements
         function loadAchievements() {
             Effects.renderLevelBadge(document.getElementById('achievementLevel'));
             Effects.renderAchievements(document.getElementById('achievementsBadges'));
 
-            // Achievements list
             const achievements = Effects.getAchievements();
             const badgesList = [
-                { id: 'firstProject', icon: '🎯', name: 'البداية', description: 'إنشاء أول مشروع' },
+                { id: 'firstProject', icon: '🏁', name: 'البداية', description: 'إنشاء أول مشروع' },
                 { id: 'fiveProjects', icon: '⭐', name: 'نجم صاعد', description: 'إنشاء 5 مشاريع' },
                 { id: 'tenProjects', icon: '🏆', name: 'متميز', description: 'إنشاء 10 مشاريع' },
                 { id: 'firstComplete', icon: '✅', name: 'منجز', description: 'إكمال أول مشروع' },
@@ -754,22 +811,104 @@
       `).join('');
         }
 
-        // Initialize
+        function getInvitePermissionsSelection() {
+            const checked = document.querySelectorAll('input[name="invitePermission"]:checked');
+            return Array.from(checked).map(input => input.value);
+        }
+
+        function renderInvitePermissionsGrid() {
+            const grid = document.getElementById('invitePermissionsGrid');
+            if (!grid) return;
+
+            const defaults = new Set(Auth.DEFAULT_MEMBER_PERMISSIONS);
+            grid.innerHTML = Auth.getPermissionCatalog().map(permission => `
+                <label style="display:flex; align-items:center; gap:0.5rem; border:1px solid var(--border-color); border-radius:10px; padding:0.55rem 0.7rem; background:var(--bg-secondary);">
+                    <input type="checkbox" name="invitePermission" value="${permission.key}" ${defaults.has(permission.key) ? 'checked' : ''}>
+                    <span>${permission.label}</span>
+                </label>
+            `).join('');
+        }
+
+        function renderInviteList() {
+            const container = document.getElementById('inviteListContainer');
+            if (!container) return;
+
+            const now = Date.now();
+            const invites = Auth.listInvites().filter(invite => !invite.used && !invite.revoked && new Date(invite.expiresAt).getTime() > now);
+
+            if (invites.length === 0) {
+                container.innerHTML = '<div style="padding:0.8rem; color:var(--text-muted); text-align:center;">لا توجد روابط نشطة</div>';
+                return;
+            }
+
+            container.innerHTML = invites.map(invite => {
+                const expires = new Date(invite.expiresAt).toLocaleString('ar-IQ');
+                return `
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:0.8rem; border:1px solid var(--border-color); border-radius:10px; padding:0.7rem; background:var(--bg-secondary);">
+                        <div style="min-width:0;">
+                            <div style="font-weight:600;">${invite.avatar} ${invite.name}</div>
+                            <div style="font-size:0.82rem; color:var(--text-secondary);">${invite.role} • ينتهي: ${expires}</div>
+                        </div>
+                        <button class="btn btn-secondary" style="padding:0.45rem 0.8rem;" onclick="revokeInviteLink('${invite.id}')">إلغاء</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function revokeInviteLink(inviteId) {
+            const result = await Auth.revokeInvite(inviteId);
+            if (!result.success) {
+                App.showToast(result.message, 'error');
+                return;
+            }
+
+            App.showToast('تم إلغاء الرابط', 'success');
+            renderInviteList();
+        }
+
+        async function copyText(value) {
+            try {
+                await navigator.clipboard.writeText(value);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function loadInviteManagement() {
+            const card = document.getElementById('leaderAccessCard');
+            if (!card) return;
+            if (!Auth.isLeader()) {
+                card.style.display = 'none';
+                return;
+            }
+
+            card.style.display = '';
+
+            if (!document.getElementById('invitePermissionsGrid').dataset.ready) {
+                renderInvitePermissionsGrid();
+                document.getElementById('invitePermissionsGrid').dataset.ready = '1';
+            }
+
+            const leaderOutput = document.getElementById('leaderLinkOutput');
+            if (leaderOutput && !leaderOutput.value) {
+                leaderOutput.value = 'غير قابل للعرض (اضغط تدوير الرابط للحصول على رابط جديد)';
+            }
+
+            renderInviteList();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Lucide icons
             lucide.createIcons();
 
-            // Get current user from session
             const session = Auth.getSession();
             if (!session) {
                 window.location.href = 'login.html';
                 return;
             }
 
-            // Set greeting with actual user name
             document.getElementById('greetingText').textContent = `${App.getGreeting()}، ${session.name} ${session.avatar}`;
 
-            // Set date
             const today = new Date();
             document.getElementById('currentDate').textContent = today.toLocaleDateString('ar-IQ', {
                 weekday: 'long',
@@ -778,13 +917,9 @@
                 day: 'numeric'
             });
 
-            // Render sidebar level
             Effects.renderLevelBadge(document.getElementById('sidebarLevel'));
-
-            // Update sound toggle state
             document.getElementById('soundToggle').checked = Effects.soundEnabled;
 
-            // Render user badge in settings
             document.getElementById('currentUserBadge').innerHTML = `
                 <div class="user-avatar">${session.avatar}</div>
                 <div class="user-info">
@@ -793,81 +928,111 @@
                 </div>
             `;
 
-            // New project form
-            document.getElementById('newProjectForm').addEventListener('submit', (e) => {
-                e.preventDefault();
+            applyPermissionVisibility();
 
-                const selectedMembers = [];
-                document.querySelectorAll('.member-select-item.selected').forEach(item => {
-                    selectedMembers.push(item.dataset.id);
-                });
+            const newProjectForm = document.getElementById('newProjectForm');
+            if (newProjectForm) {
+                newProjectForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
 
-                const teamSize = parseInt(document.querySelector('input[name="teamSize"]:checked').value);
+                    if (!Auth.can(Auth.PERMISSIONS.PROJECTS_CREATE)) {
+                        App.showToast('لا تملك صلاحية إنشاء المشاريع', 'error');
+                        return;
+                    }
 
-                if (selectedMembers.length !== teamSize) {
-                    App.showToast(`يجب اختيار ${teamSize} أعضاء بالضبط`, 'warning');
-                    return;
-                }
+                    const selectedMembers = [];
+                    document.querySelectorAll('.member-select-item.selected').forEach(item => {
+                        selectedMembers.push(item.dataset.id);
+                    });
 
-                const project = {
-                    title: document.getElementById('projectTitle').value,
-                    description: document.getElementById('projectDescription').value,
-                    subject: document.getElementById('projectSubject').value,
-                    teamSize: teamSize,
-                    deadline: document.getElementById('projectDeadline').value,
-                    priority: document.querySelector('input[name="priority"]:checked').value,
-                    assignedMembers: selectedMembers
-                };
+                    const teamSize = parseInt(document.querySelector('input[name="teamSize"]:checked').value);
+                    if (selectedMembers.length !== teamSize) {
+                        App.showToast(`يجب اختيار ${teamSize} أعضاء بالضبط`, 'warning');
+                        return;
+                    }
 
-                Projects.create(project);
+                    const project = {
+                        title: document.getElementById('projectTitle').value,
+                        description: document.getElementById('projectDescription').value,
+                        subject: document.getElementById('projectSubject').value,
+                        teamSize,
+                        deadline: document.getElementById('projectDeadline').value,
+                        priority: document.querySelector('input[name="priority"]:checked').value,
+                        assignedMembers: selectedMembers
+                    };
 
-                // Log activity
-                ActivityLog.log('project_create', session.memberId, {
-                    message: `${session.name} أنشأ مشروع: ${project.title}`
-                });
+                    Projects.create(project);
 
-                Effects.showConfetti();
-                App.showToast('تم إنشاء المشروع بنجاح! 🎉', 'success');
+                    ActivityLog.log('project_create', session.memberId, {
+                        message: `${session.name} أنشأ مشروع: ${project.title}`
+                    });
 
-                // Update achievements
-                Effects.initAchievements();
+                    Effects.showConfetti();
+                    App.showToast('تم إنشاء المشروع بنجاح! 🎉', 'success');
+                    Effects.initAchievements();
 
-                // Reset form
-                e.target.reset();
-                document.getElementById('size3').checked = true;
-
-                // Go to projects
-                setTimeout(() => showSection('projects'), 1500);
-            });
-
-            // PIN change form
-            document.getElementById('pinChangeForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                const oldPin = document.getElementById('oldPin').value;
-                const newPin = document.getElementById('newPin').value;
-                const confirmPin = document.getElementById('confirmPin').value;
-
-                if (newPin !== confirmPin) {
-                    App.showToast('الرمز الجديد غير متطابق', 'error');
-                    return;
-                }
-
-                const result = Auth.changePin(session.memberId, oldPin, newPin);
-
-                if (result.success) {
-                    App.showToast(result.message, 'success');
                     e.target.reset();
-                } else {
-                    App.showToast(result.message, 'error');
-                }
-            });
+                    document.getElementById('size3').checked = true;
+                    setTimeout(() => showSection('projects'), 1200);
+                });
+            }
 
-            // Load initial section
-            loadOverview();
-            loadAddProjectForm();
+            if (Auth.isLeader()) {
+                const rotateBtn = document.getElementById('rotateLeaderLinkBtn');
+                const copyLeaderBtn = document.getElementById('copyLeaderLinkBtn');
+                const leaderLinkOutput = document.getElementById('leaderLinkOutput');
+                const inviteForm = document.getElementById('inviteCreateForm');
+                const inviteLinkOutput = document.getElementById('inviteLinkOutput');
+                const copyInviteBtn = document.getElementById('copyInviteLinkBtn');
 
-            // Re-render icons after content loads
+                rotateBtn?.addEventListener('click', async () => {
+                    const rotated = await Auth.rotateLeaderToken();
+                    leaderLinkOutput.value = rotated.link;
+                    App.showToast('تم تدوير رابط القائد', 'success');
+                });
+
+                copyLeaderBtn?.addEventListener('click', async () => {
+                    const ok = await copyText(leaderLinkOutput.value);
+                    App.showToast(ok ? 'تم النسخ' : 'تعذر النسخ تلقائياً', ok ? 'success' : 'warning');
+                });
+
+                copyInviteBtn?.addEventListener('click', async () => {
+                    const ok = await copyText(inviteLinkOutput.value);
+                    App.showToast(ok ? 'تم النسخ' : 'تعذر النسخ تلقائياً', ok ? 'success' : 'warning');
+                });
+
+                inviteForm?.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const permissions = getInvitePermissionsSelection();
+                    if (permissions.length === 0) {
+                        App.showToast('اختر صلاحية واحدة على الأقل', 'warning');
+                        return;
+                    }
+
+                    const hours = Math.max(1, Number(document.getElementById('inviteExpiryHours').value) || 24);
+                    const result = await Auth.createInvite({
+                        name: document.getElementById('inviteName').value,
+                        role: document.getElementById('inviteRole').value,
+                        avatar: document.getElementById('inviteAvatar').value,
+                        permissions,
+                        expiresInMinutes: hours * 60
+                    });
+
+                    if (!result.success) {
+                        App.showToast(result.message, 'error');
+                        return;
+                    }
+
+                    inviteLinkOutput.value = result.link;
+                    App.showToast('تم إنشاء رابط الدعوة', 'success');
+                    renderInviteList();
+                });
+            }
+
+            const initialSection = getAllowedDefaultSection();
+            showSection(initialSection);
+
             setTimeout(() => lucide.createIcons(), 100);
         });
     </script>
@@ -919,3 +1084,6 @@
 </body>
 
 </html>
+
+
+

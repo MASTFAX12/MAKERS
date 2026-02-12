@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    MAK TEAM HQ - Storage Module
    Handles all localStorage operations
    ============================================ */
@@ -75,9 +75,9 @@ const Storage = {
     return [
       {
         id: 'member_001',
-        name: 'مصطفى',
-        role: 'القائد',
-        avatar: 'م',
+        name: 'ظ…طµط·ظپظ‰',
+        role: 'ط§ظ„ظ‚ط§ط¦ط¯',
+        avatar: 'ظ…',
         email: '',
         stats: {
           totalProjects: 0,
@@ -100,9 +100,9 @@ const Storage = {
       },
       {
         id: 'member_002',
-        name: 'محمد',
-        role: 'عضو',
-        avatar: 'م',
+        name: 'ظ…ط­ظ…ط¯',
+        role: 'ط¹ط¶ظˆ',
+        avatar: 'ظ…',
         email: '',
         stats: {
           totalProjects: 0,
@@ -126,9 +126,9 @@ const Storage = {
       },
       {
         id: 'member_003',
-        name: 'ابراهيم',
-        role: 'عضو',
-        avatar: 'ا',
+        name: 'ط§ط¨ط±ط§ظ‡ظٹظ…',
+        role: 'ط¹ط¶ظˆ',
+        avatar: 'ط§',
         email: '',
         stats: {
           totalProjects: 0,
@@ -152,9 +152,9 @@ const Storage = {
       },
       {
         id: 'member_004',
-        name: 'مازن',
-        role: 'عضو',
-        avatar: 'م',
+        name: 'ظ…ط§ط²ظ†',
+        role: 'ط¹ط¶ظˆ',
+        avatar: 'ظ…',
         email: '',
         stats: {
           totalProjects: 0,
@@ -178,9 +178,9 @@ const Storage = {
       },
       {
         id: 'member_005',
-        name: 'مرتضى',
-        role: 'عضو',
-        avatar: 'م',
+        name: 'ظ…ط±طھط¶ظ‰',
+        role: 'ط¹ط¶ظˆ',
+        avatar: 'ظ…',
         email: '',
         stats: {
           totalProjects: 0,
@@ -204,9 +204,9 @@ const Storage = {
       },
       {
         id: 'member_006',
-        name: 'بافيل',
-        role: 'عضو',
-        avatar: 'ب',
+        name: 'ط¨ط§ظپظٹظ„',
+        role: 'ط¹ط¶ظˆ',
+        avatar: 'ط¨',
         email: '',
         stats: {
           totalProjects: 0,
@@ -235,17 +235,16 @@ const Storage = {
   getDefaultSettings() {
     return {
       teamName: 'Makers Team',
-      teamNameAr: 'فريق ميكرز',
+      teamNameAr: 'ظپط±ظٹظ‚ ظ…ظٹظƒط±ط²',
       teamAbbr: 'MAK',
-      password: 'mak2026',
       subjects: [
-        { id: 'linux', name: 'إدارة لينكس', icon: 'terminal' },
-        { id: 'programming', name: 'أساسيات البرمجة', icon: 'code' },
-        { id: 'ethics', name: 'أخلاقيات عصر المعلومات', icon: 'scale' },
-        { id: 'democracy', name: 'الديمقراطية وحقوق الإنسان', icon: 'landmark' },
-        { id: 'math', name: 'الرياضيات', icon: 'calculator' },
-        { id: 'english', name: 'الإنجليزي', icon: 'languages' },
-        { id: 'engineering_drawing', name: 'الرسم الهندسي', icon: 'ruler' }
+        { id: 'linux', name: 'ط¥ط¯ط§ط±ط© ظ„ظٹظ†ظƒط³', icon: 'terminal' },
+        { id: 'programming', name: 'ط£ط³ط§ط³ظٹط§طھ ط§ظ„ط¨ط±ظ…ط¬ط©', icon: 'code' },
+        { id: 'ethics', name: 'ط£ط®ظ„ط§ظ‚ظٹط§طھ ط¹طµط± ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ', icon: 'scale' },
+        { id: 'democracy', name: 'ط§ظ„ط¯ظٹظ…ظ‚ط±ط§ط·ظٹط© ظˆط­ظ‚ظˆظ‚ ط§ظ„ط¥ظ†ط³ط§ظ†', icon: 'landmark' },
+        { id: 'math', name: 'ط§ظ„ط±ظٹط§ط¶ظٹط§طھ', icon: 'calculator' },
+        { id: 'english', name: 'ط§ظ„ط¥ظ†ط¬ظ„ظٹط²ظٹ', icon: 'languages' },
+        { id: 'engineering_drawing', name: 'ط§ظ„ط±ط³ظ… ط§ظ„ظ‡ظ†ط¯ط³ظٹ', icon: 'ruler' }
       ]
     };
   }
@@ -253,3 +252,4 @@ const Storage = {
 
 // Initialize storage on load
 Storage.init();
+
